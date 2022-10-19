@@ -33,9 +33,8 @@ define('FOODLYMENTOR_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('FOODLYMENTOR_PLUGIN_URL', plugins_url('/', __FILE__));
 define('FOODLYMENTOR_ASSETS_URL', plugins_url('/assets', __FILE__));
 
-define('FOODLYMENTOR_ADMIN_TEMPLATES', FOODLYMENTOR_PLUGIN_DIR . '/templates/admin/');
-define('FOODLYMENTOR_FRONTEND_TEMPLATES', FOODLYMENTOR_PLUGIN_DIR . '/templates/frontend');
-
+define('FOODLYMENTOR_ADMIN_DIR', FOODLYMENTOR_PLUGIN_DIR . '/includes/Admin');
+define('FOODLYMENTOR_FRONTEND_DIR', FOODLYMENTOR_PLUGIN_DIR . '/includes/Frontend');
 
 
 /**
