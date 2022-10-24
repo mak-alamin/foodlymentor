@@ -16,6 +16,7 @@ final class Init
     {
         return [
             Admin\Menus::class,
+            Elementor\InitWidgets::class,
         ];
     }
 
