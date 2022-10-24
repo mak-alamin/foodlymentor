@@ -11,7 +11,7 @@ use Inc\Elementor\Widgets\Product_Grid\Product_Grid;
 
 class InitWidgets
 {
-    public function __construct()
+    public function register()
     {
         add_action('elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories']);
 

@@ -14,6 +14,7 @@ use Elementor\Widget_Base;
 
 class Product_Grid extends Widget_Base
 {
+    protected $page_id;
 
     public function get_name()
     {
@@ -40,6 +41,20 @@ class Product_Grid extends Widget_Base
         return ['product', 'shop'];
     }
 
+    public function get_style_depends()
+    {
+        return [
+            'widget-product-grid',
+        ];
+    }
+
+    public function get_script_depends()
+    {
+        return [
+            'widget-product-grid',
+        ];
+    }
+
     protected function register_controls()
     {
         // Content Controls
@@ -56,6 +71,8 @@ class Product_Grid extends Widget_Base
             return;
         }
 
+        $this->page_id = get_the_ID();
+
         $settings = $this->get_settings_for_display();
 
         // normalize for load more fix
@@ -69,7 +86,6 @@ class Product_Grid extends Widget_Base
         $this->add_render_attribute('wrap', [
             'class'          => [
                 "foodlymentor-product-grid",
-                $settings['foodlymentor_product_grid_style_preset'],
                 $settings['foodlymentor_product_grid_layout']
             ],
             'id'             => 'foodlymentor-product-grid',

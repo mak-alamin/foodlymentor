@@ -46,16 +46,6 @@ $this->add_responsive_control(
                         'list',
                     ],
                 ],
-                [
-                    'name' => 'foodlymentor_product_grid_style_preset',
-                    'operator' => 'in',
-                    'value' => [
-                        'foodlymentor-product-default',
-                        'foodlymentor-product-simple',
-                        'foodlymentor-product-reveal',
-                        'foodlymentor-product-overlay',
-                    ]
-                ],
             ],
         ],
     ]
@@ -85,13 +75,6 @@ $this->add_control(
                         'masonry',
                     ],
                 ],
-                [
-                    'name' => 'foodlymentor_product_list_style_preset',
-                    'operator' => '!=',
-                    'value' => [
-                        'foodlymentor-product-list-preset-3',
-                    ]
-                ],
             ],
         ],
     ]
@@ -117,11 +100,6 @@ $this->add_control(
                         'masonry',
                     ],
                 ],
-                [
-                    'name' => 'foodlymentor_product_list_style_preset',
-                    'operator' => '==',
-                    'value' => 'foodlymentor-product-list-preset-3',
-                ],
             ],
         ],
     ]
@@ -146,16 +124,6 @@ $this->add_responsive_control(
                         'list',
                     ],
                 ],
-                [
-                    'name' => 'foodlymentor_product_grid_style_preset',
-                    'operator' => 'in',
-                    'value' => [
-                        'foodlymentor-product-default',
-                        'foodlymentor-product-simple',
-                        'foodlymentor-product-reveal',
-                        'foodlymentor-product-overlay',
-                    ]
-                ],
             ],
         ],
     ]
@@ -173,14 +141,6 @@ $this->start_controls_tabs('foodlymentor_product_grid_tabs', [
                     'mesonry',
                 ]
             ],
-            [
-                'name' => 'foodlymentor_product_list_style_preset',
-                'operator' => '!in',
-                'value' => [
-                    'foodlymentor-product-list-preset-3',
-                    'foodlymentor-product-list-preset-4',
-                ]
-            ]
         ]
     ],
 ]);
@@ -209,17 +169,7 @@ $this->add_group_control(
             ],
         ],
         'selector' => '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product',
-        'condition' => [
-            'foodlymentor_product_grid_style_preset' => [
-                'foodlymentor-product-default',
-                'foodlymentor-product-simple',
-                'foodlymentor-product-overlay',
-                'foodlymentor-product-preset-5',
-                'foodlymentor-product-preset-6',
-                'foodlymentor-product-preset-7',
-                'foodlymentor-product-preset-8',
-            ]
-        ],
+        'condition' => [],
     ]
 );
 
@@ -312,18 +262,7 @@ $this->add_control(
                     'value' => [
                         'grid',
                         'list',
-                        'masonry',
                     ],
-                ],
-                [
-                    'name' => 'foodlymentor_product_grid_style_preset',
-                    'operator' => '!in',
-                    'value' => [
-                        'foodlymentor-product-default',
-                        'foodlymentor-product-simple',
-                        'foodlymentor-product-reveal',
-                        'foodlymentor-product-overlay',
-                    ]
                 ],
             ],
         ],
@@ -362,16 +301,6 @@ $this->add_responsive_control(
                     'value' => [
                         'list',
                     ],
-                ],
-                [
-                    'name' => 'foodlymentor_product_grid_style_preset',
-                    'operator' => '!in',
-                    'value' => [
-                        'foodlymentor-product-default',
-                        'foodlymentor-product-simple',
-                        'foodlymentor-product-reveal',
-                        'foodlymentor-product-overlay',
-                    ]
                 ],
             ],
         ],
@@ -415,16 +344,6 @@ $this->add_responsive_control(
                     'value' => [
                         'list',
                     ],
-                ],
-                [
-                    'name' => 'foodlymentor_product_grid_style_preset',
-                    'operator' => '!in',
-                    'value' => [
-                        'foodlymentor-product-default',
-                        'foodlymentor-product-simple',
-                        'foodlymentor-product-reveal',
-                        'foodlymentor-product-overlay',
-                    ]
                 ],
             ],
         ],

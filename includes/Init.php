@@ -16,6 +16,7 @@ final class Init
     {
         return [
             Admin\Menus::class,
+            Base\Asset_Builder::class,
             Elementor\InitWidgets::class,
         ];
     }
