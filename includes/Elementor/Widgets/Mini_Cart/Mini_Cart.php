@@ -31,7 +31,7 @@ class Mini_Cart extends \Elementor\Widget_Base
 
     public function get_keywords()
     {
-        return ['cart', 'shop'];
+        return ['cart', 'shop', 'food', 'foodlymentor'];
     }
 
     protected function render()

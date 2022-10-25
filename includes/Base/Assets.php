@@ -6,7 +6,7 @@
 
 namespace Inc\Base;
 
-class Asset_Builder
+class Assets
 {
     public function register()
     {

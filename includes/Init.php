@@ -15,8 +15,8 @@ final class Init
     public static function getServices()
     {
         return [
+            Base\Assets::class,
             Admin\Menus::class,
-            Base\Asset_Builder::class,
             Elementor\InitWidgets::class,
         ];
     }

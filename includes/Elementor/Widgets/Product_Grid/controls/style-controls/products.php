@@ -12,56 +12,14 @@ $this->start_controls_section(
     ]
 );
 
-$this->add_responsive_control(
-    'foodlymentor_product_grid_content_alignment',
-    [
-        'label' => __('Alignment', 'foodlymentor'),
-        'type' => \Elementor\Controls_Manager::CHOOSE,
-        'options' => [
-            'left' => [
-                'title' => __('Left', 'foodlymentor'),
-                'icon' => 'eicon-text-align-left',
-            ],
-            'center' => [
-                'title' => __('Center', 'foodlymentor'),
-                'icon' => 'eicon-text-align-center',
-            ],
-            'right' => [
-                'title' => __('Right', 'foodlymentor'),
-                'icon' => 'eicon-text-align-right',
-            ],
-        ],
-        'default' => 'center',
-        'toggle' => true,
-        'selectors' => [
-            '{{WRAPPER}} .foodlymentor-product-grid:not(.list) .woocommerce ul.products li.product' => 'text-align: {{VALUE}};',
-        ],
-        'conditions' => [
-            'relation' => 'and',
-            'terms' => [
-                [
-                    'name' => 'foodlymentor_product_grid_layout',
-                    'operator' => '!=',
-                    'value' => [
-                        'list',
-                    ],
-                ],
-            ],
-        ],
-    ]
-);
-
 $this->add_control(
     'foodlymentor_product_grid_background_color',
     [
-        'label' => esc_html__('Content Background Color', 'foodlymentor'),
+        'label' => esc_html__('Box Background Color', 'foodlymentor'),
         'type' => Controls_Manager::COLOR,
         'default' => '#fff',
         'selectors' => [
-            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product, {{WRAPPER}} .foodlymentor-product-grid .icons-wrap.block-box-style' => 'background-color: {{VALUE}};',
-            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product.foodlymentor-product-list-preset-4 .product-details-wrap' => 'background-color: {{VALUE}};',
-            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product.foodlymentor-product-list-preset-3, {{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product.foodlymentor-product-list-preset-4'
-            => 'background-color: transparent;',
+            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product' => 'background-color: {{VALUE}};',
         ],
         'conditions' => [
             'relation' => 'and',
@@ -108,7 +66,7 @@ $this->add_control(
 $this->add_responsive_control(
     'foodlymentor_peoduct_grid_padding',
     [
-        'label' => __('Padding', 'foodlymentor'),
+        'label' => __('Box Padding', 'foodlymentor'),
         'type' => Controls_Manager::DIMENSIONS,
         'size_units' => ['px', '%', 'em'],
         'selectors' => [
@@ -215,13 +173,13 @@ $this->end_controls_tab();
 $this->end_controls_tabs();
 
 $this->add_control(
-    'foodlymentor_peoduct_grid_border_radius',
+    'foodlymentor_product_grid_border_radius',
     [
         'label' => esc_html__('Border Radius', 'foodlymentor'),
         'type' => Controls_Manager::DIMENSIONS,
         'selectors' => [
             '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
-            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product woocommerce-loop-product__link img' => 'border-radius: {{TOP}}px {{RIGHT}}px 0 0;',
+            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product .woocommerce-loop-product__link img' => 'border-radius: {{TOP}}px {{RIGHT}}px 0 0;',
             '{{WRAPPER}} .foodlymentor-product-grid.list .woocommerce ul.products li.product .woocommerce-loop-product__link img' => 'border-radius: {{TOP}}px 0 0 {{LEFT}}px;',
         ],
     ]
@@ -232,16 +190,20 @@ $this->add_responsive_control(
     [
         'label' => esc_html__('Image Width(%)', 'foodlymentor'),
         'type' => Controls_Manager::SLIDER,
+        'size_units' => ['px', '%'],
         'range' => [
+            'px' => [
+                'min' => 0,
+                'max' => 200,
+                'step' => 1,
+            ],
             '%' => [
-                'max' => 50,
+                'min' => 0,
+                'max' => 100,
             ],
         ],
         'selectors' => [
-            '{{WRAPPER}} .foodlymentor-product-grid.list .foodlymentor-product-wrap .product-image-wrap' => 'width: {{SIZE}}%;',
-        ],
-        'condition' => [
-            'foodlymentor_product_grid_layout' => 'list',
+            '{{WRAPPER}} .foodlymentor-product-grid .product img' => 'width: {{SIZE}}{{UNIT}};',
         ],
         'separator' => 'before',
     ]
@@ -262,6 +224,33 @@ $this->add_control(
                     'value' => [
                         'grid',
                         'list',
+                    ],
+                ],
+            ],
+        ],
+    ]
+);
+
+
+$this->add_control(
+    'foodlymentor_product_details_background_color',
+    [
+        'label' => esc_html__('Background Color', 'foodlymentor'),
+        'type' => Controls_Manager::COLOR,
+        'default' => '#fff',
+        'selectors' => [
+            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product .product__desc' => 'background-color: {{VALUE}};',
+        ],
+        'conditions' => [
+            'relation' => 'and',
+            'terms' => [
+                [
+                    'name' => 'foodlymentor_product_grid_layout',
+                    'operator' => 'in',
+                    'value' => [
+                        'grid',
+                        'list',
+                        'masonry',
                     ],
                 ],
             ],
@@ -290,7 +279,7 @@ $this->add_responsive_control(
         ],
         'default' => 'center',
         'selectors' => [
-            '{{WRAPPER}} .foodlymentor-product-grid .product-details-wrap' => 'text-align: {{VALUE}};',
+            '{{WRAPPER}} .foodlymentor-product-grid .product' => 'text-align: {{VALUE}};',
         ],
         'conditions' => [
             'relation' => 'and',
@@ -308,7 +297,7 @@ $this->add_responsive_control(
 );
 
 $this->add_responsive_control(
-    'foodlymentor_product_grid_inner_padding',
+    'foodlymentor_product_details_padding',
     [
         'label' => __('Padding', 'foodlymentor'),
         'type' => Controls_Manager::DIMENSIONS,
@@ -333,7 +322,7 @@ $this->add_responsive_control(
             'isLinked' => true,
         ],
         'selectors' => [
-            '{{WRAPPER}} .foodlymentor-product-grid.grid .foodlymentor-product-wrap .product-details-wrap, {{WRAPPER}} .foodlymentor-product-grid.masonry .foodlymentor-product-wrap .product-details-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            '{{WRAPPER}} .foodlymentor-product-grid .product__desc' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
         ],
         'conditions' => [
             'relation' => 'and',
