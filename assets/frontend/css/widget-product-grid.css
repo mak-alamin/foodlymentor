@@ -138,6 +138,15 @@
   background-color: #333;
   padding: 10px;
 }
+.foodlymentor-product-img-right .foodlymentor-product-grid .product {
+  flex-direction: row-reverse;
+}
+.foodlymentor-product-img-top .foodlymentor-product-grid .product {
+  flex-direction: column;
+}
+.foodlymentor-product-img-bottom .foodlymentor-product-grid .product {
+  flex-direction: column-reverse;
+}
 .foodlymentor-product-grid .product__desc h2,
 .foodlymentor-product-grid .product__desc p {
   margin-bottom: 0;

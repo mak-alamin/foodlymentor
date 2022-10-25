@@ -185,30 +185,6 @@ $this->add_control(
     ]
 );
 
-$this->add_responsive_control(
-    'foodlymentor_product_grid_image_width',
-    [
-        'label' => esc_html__('Image Width(%)', 'foodlymentor'),
-        'type' => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%'],
-        'range' => [
-            'px' => [
-                'min' => 0,
-                'max' => 200,
-                'step' => 1,
-            ],
-            '%' => [
-                'min' => 0,
-                'max' => 100,
-            ],
-        ],
-        'selectors' => [
-            '{{WRAPPER}} .foodlymentor-product-grid .product img' => 'width: {{SIZE}}{{UNIT}};',
-        ],
-        'separator' => 'before',
-    ]
-);
-
 $this->add_control(
     'foodlymentor_product_grid_details_heading',
     [

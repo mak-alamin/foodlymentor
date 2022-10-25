@@ -50,19 +50,15 @@ $this->add_render_attribute('wrap', [
             foreach ($query->posts as $key => $product) {
                 echo '<li class="product">';
 
-                echo '<a href="#" data-product_id="' . $product->ID . '">';
+                echo '<a href="#" data-product_id="' . $product->ID . '" class="product__img" />';
                 echo get_the_post_thumbnail($product->ID);
                 echo '</a>';
 
-                echo '<a href="#" data-product_id="' . $product->ID . '">';
-
-                echo '<div class="product__desc">';
+                echo '<a href="#" data-product_id="' . $product->ID . '" class="product__desc">';
 
                 echo '<h2 class="woocommerce-loop-product__title">' . $product->post_title . '</h2>';
 
                 echo '<p class="woocommerce-loop-product__excerpt">' . $product->post_excerpt . '</p>';
-
-                echo '</div>';
 
                 echo '</a>';
 

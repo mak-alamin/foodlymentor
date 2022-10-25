@@ -12,8 +12,11 @@ use Elementor\Group_Control_Typography;
 use Elementor\Plugin;
 use Elementor\Widget_Base;
 
+
 class Product_Grid extends Widget_Base
 {
+    use \Inc\Traits\Elementor\Controls;
+
     protected $page_id;
 
     public function get_name()
@@ -120,5 +123,6 @@ class Product_Grid extends Widget_Base
     protected function init_style_controls()
     {
         require_once __DIR__ . '/controls/style-controls/products.php';
+        require_once __DIR__ . '/controls/style-controls/image.php';
     }
 }
