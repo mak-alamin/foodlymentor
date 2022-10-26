@@ -1,7 +1,11 @@
 <?php
 
 /**
+ * -------------------------------------------------
+ * Elementor Widgets Init Class
+ * 
  * @package  Foodlymentor
+ * -------------------------------------------------
  */
 
 namespace Inc\Elementor;
