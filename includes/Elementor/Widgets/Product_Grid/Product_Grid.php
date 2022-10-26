@@ -85,8 +85,9 @@ class Product_Grid extends Widget_Base
     protected function init_style_controls()
     {
         require_once __DIR__ . '/controls/style-controls/products.php';
-        require_once __DIR__ . '/controls/style-controls/image.php';
         require_once __DIR__ . '/controls/style-controls/color-typography.php';
+        require_once __DIR__ . '/controls/style-controls/image.php';
+        require_once __DIR__ . '/controls/style-controls/plus-icon.php';
     }
 
     /**

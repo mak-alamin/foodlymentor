@@ -179,8 +179,6 @@ $this->add_control(
         'type' => Controls_Manager::DIMENSIONS,
         'selectors' => [
             '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
-            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product .woocommerce-loop-product__link img' => 'border-radius: {{TOP}}px {{RIGHT}}px 0 0;',
-            '{{WRAPPER}} .foodlymentor-product-grid.list .woocommerce ul.products li.product .woocommerce-loop-product__link img' => 'border-radius: {{TOP}}px 0 0 {{LEFT}}px;',
         ],
     ]
 );

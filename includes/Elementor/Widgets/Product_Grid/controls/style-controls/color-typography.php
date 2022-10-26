@@ -52,4 +52,18 @@ $this->color_typography_controls('product_grid_price', array(
     '.foodlymentor-product-grid .woocommerce ul.products li.product .woocommerce-loop-product__price .woocommerce-Price-amount',
 ));
 
+// Plus Icon Styles
+$this->add_control(
+    'foodlymentor_product_grid_plus_icon_heading',
+    [
+        'label' => __('Plus Icon', 'foodlymentor'),
+        'type' => Controls_Manager::HEADING,
+        'separator' => 'before',
+    ]
+);
+
+$this->color_typography_controls('product_grid_plus_icon', array(
+    '.foodlymentor-product-grid .woocommerce ul.products li.product span.eicon-plus',
+));
+
 $this->end_controls_section();
