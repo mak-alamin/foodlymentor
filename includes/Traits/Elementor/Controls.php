@@ -7,7 +7,36 @@ use Elementor\Group_Control_Border;
 
 trait Controls
 {
-    public function box_controls($unique_id = '', $selectors = array(), $disable_controls = array())
+    public function color_typography_controls($element_name = '', $selectors = array(), $disable_controls = array())
+    {
+        $color_selectors = array();
+
+        foreach ($selectors as $key => $selector) {
+            $color_selectors['{{WRAPPER}} ' . $selector] = 'color: {{VALUE}};';
+        }
+
+        // Color
+        $this->add_control(
+            'foodlymentor_' . $element_name . '_color',
+            [
+                'label' => __('Text Color', 'foodlymentor'),
+                'type' => Controls_Manager::COLOR,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => $color_selectors,
+            ]
+        );
+
+        // Typography
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'foodlymentor_' . $element_name . '_typography',
+				'selector' => '{{WRAPPER}} ' . $selectors[0],
+			]
+		);
+    }
+
+    public function box_controls($element_name = '', $selectors = array(), $disable_controls = array())
     {
         $bg_selectors = array();
         $padding_selectors = array();
@@ -20,7 +49,7 @@ trait Controls
 
         // Background Color
         $this->add_control(
-            'foodlymentor_' . $unique_id . '_bg_color',
+            'foodlymentor_' . $element_name . '_bg_color',
             [
                 'label' => esc_html__('Background Color', 'foodlymentor'),
                 'type' => Controls_Manager::COLOR,
@@ -31,7 +60,7 @@ trait Controls
 
         // Padding
         $this->add_responsive_control(
-            'foodlymentor_' . $unique_id . '_padding',
+            'foodlymentor_' . $element_name . '_padding',
             [
                 'label' => __('Padding', 'foodlymentor'),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -44,7 +73,7 @@ trait Controls
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name' => 'foodlymentor_' . $unique_id . '_border',
+                'name' => 'foodlymentor_' . $element_name . '_border',
                 'fields_options' => [
                     'border' => [
                         'default' => 'solid',

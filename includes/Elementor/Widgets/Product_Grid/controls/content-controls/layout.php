@@ -5,7 +5,7 @@ use Elementor\Controls_Manager;
 $this->start_controls_section(
     'foodlymentor_product_grid_layouts',
     [
-        'label' => esc_html__('Layouts', 'foodlymentor'),
+        'label' => esc_html__('Main Layout', 'foodlymentor'),
     ]
 );
 
@@ -59,6 +59,53 @@ $this->add_responsive_control(
         'condition' => [
             'foodlymentor_product_grid_layout' => 'list',
         ],
+    ]
+);
+
+$this->end_controls_section();
+
+/**
+ * Box Layout
+ */
+
+$this->start_controls_section(
+    'foodlymentor_product_grid_box_layouts',
+    [
+        'label' => esc_html__('Box Layout', 'foodlymentor'),
+    ]
+);
+
+$this->add_responsive_control(
+    'foodlymentor_product_grid_elements_hr_alignment',
+    [
+        'label' => esc_html__('Horizontal Alignment', 'foodlymentor'),
+        'type' => Controls_Manager::SELECT,
+        'default' => 'default',
+        'options' => [
+            'default' => esc_html__('Default', 'foodlymentor'),
+            'space-between' => esc_html__('Space Between', 'foodlymentor'),
+            'space-around' => esc_html__('Space Around', 'foodlymentor'),
+            'space-evenly' => esc_html__('Space Evenly', 'foodlymentor'),
+        ],
+        'toggle' => true,
+        'prefix_class' => 'foodlymentor-product-grid-elements%s-',
+    ]
+);
+
+$this->add_responsive_control(
+    'foodlymentor_product_image_position',
+    [
+        'label' => esc_html__('Image Position', 'foodlymentor'),
+        'type' => Controls_Manager::SELECT,
+        'default' => 'left',
+        'options' => [
+            'left' => esc_html__('Left', 'foodlymentor'),
+            'right' => esc_html__('Right', 'foodlymentor'),
+            'top' => esc_html__('Top', 'foodlymentor'),
+            'bottom' => esc_html__('Bottom', 'foodlymentor'),
+        ],
+        'toggle' => true,
+        'prefix_class' => 'foodlymentor-product-img%s-',
     ]
 );
 

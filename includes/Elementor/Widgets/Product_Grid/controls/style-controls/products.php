@@ -191,19 +191,6 @@ $this->add_control(
         'label' => __('Product Details', 'foodlymentor'),
         'type' => Controls_Manager::HEADING,
         'separator' => 'before',
-        'conditions' => [
-            'relation' => 'and',
-            'terms' => [
-                [
-                    'name' => 'foodlymentor_product_grid_layout',
-                    'operator' => 'in',
-                    'value' => [
-                        'grid',
-                        'list',
-                    ],
-                ],
-            ],
-        ],
     ]
 );
 
@@ -216,20 +203,6 @@ $this->add_control(
         'default' => '#fff',
         'selectors' => [
             '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product .product__desc' => 'background-color: {{VALUE}};',
-        ],
-        'conditions' => [
-            'relation' => 'and',
-            'terms' => [
-                [
-                    'name' => 'foodlymentor_product_grid_layout',
-                    'operator' => 'in',
-                    'value' => [
-                        'grid',
-                        'list',
-                        'masonry',
-                    ],
-                ],
-            ],
         ],
     ]
 );
@@ -256,18 +229,6 @@ $this->add_responsive_control(
         'default' => 'center',
         'selectors' => [
             '{{WRAPPER}} .foodlymentor-product-grid .product' => 'text-align: {{VALUE}};',
-        ],
-        'conditions' => [
-            'relation' => 'and',
-            'terms' => [
-                [
-                    'name' => 'foodlymentor_product_grid_layout',
-                    'operator' => '!=',
-                    'value' => [
-                        'list',
-                    ],
-                ],
-            ],
         ],
     ]
 );
@@ -299,59 +260,6 @@ $this->add_responsive_control(
         ],
         'selectors' => [
             '{{WRAPPER}} .foodlymentor-product-grid .product__desc' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        ],
-        'conditions' => [
-            'relation' => 'and',
-            'terms' => [
-                [
-                    'name' => 'foodlymentor_product_grid_layout',
-                    'operator' => '!=',
-                    'value' => [
-                        'list',
-                    ],
-                ],
-            ],
-        ],
-    ]
-);
-
-$this->add_responsive_control(
-    'foodlymentor_product_list_padding',
-    [
-        'label' => esc_html__('Padding (PX)', 'foodlymentor'),
-        'type' => Controls_Manager::SLIDER,
-        'range' => [
-            'px' => [
-                'max' => 100,
-            ],
-        ],
-        'selectors' => [
-            '{{WRAPPER}} .foodlymentor-product-grid.list .foodlymentor-product-list-preset-1 .foodlymentor-product-wrap .product-details-wrap, {{WRAPPER}} .foodlymentor-product-grid.list .foodlymentor-product-list-preset-4 .foodlymentor-product-wrap .product-details-wrap' => 'padding: {{SIZE}}px;',
-            '{{WRAPPER}} .foodlymentor-product-grid.list .foodlymentor-product-list-preset-2 .foodlymentor-product-wrap' => 'padding: {{SIZE}}px;',
-            '{{WRAPPER}} .foodlymentor-product-grid.list .foodlymentor-product-list-preset-2 .foodlymentor-product-wrap .product-details-wrap' => 'padding: 0 0 0 {{SIZE}}px;',
-            '{{WRAPPER}} .foodlymentor-product-grid.list .foodlymentor-product-list-preset-3 .foodlymentor-product-wrap .product-details-wrap' => 'padding: 0 0 0 {{SIZE}}px;',
-        ],
-        'condition' => [
-            'foodlymentor_product_grid_layout' => 'list',
-        ],
-    ]
-);
-
-$this->add_responsive_control(
-    'foodlymentor_product_list_content_width',
-    [
-        'label' => esc_html__('Width (%)', 'foodlymentor'),
-        'type' => Controls_Manager::SLIDER,
-        'range' => [
-            '%' => [
-                'max' => 100,
-            ],
-        ],
-        'selectors' => [
-            '{{WRAPPER}} .foodlymentor-product-grid.list .foodlymentor-product-wrap .product-details-wrap' => 'width: {{SIZE}}%;',
-        ],
-        'condition' => [
-            'foodlymentor_product_grid_layout' => 'list',
         ],
     ]
 );

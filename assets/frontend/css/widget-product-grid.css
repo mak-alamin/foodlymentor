@@ -131,25 +131,66 @@
 .foodlymentor-product-grid .woocommerce ul.products .product {
   display: flex;
   gap: 10px;
-  justify-content: space-between;
   align-items: center;
   cursor: pointer;
   color: #fff;
   background-color: #333;
   padding: 10px;
+  position: relative;
 }
-.foodlymentor-product-img-right .foodlymentor-product-grid .product {
-  flex-direction: row-reverse;
+
+.foodlymentor-product-grid-elements-space-between
+  .foodlymentor-product-grid
+  .woocommerce
+  ul.products
+  .product {
+  justify-content: space-between;
+}
+.foodlymentor-product-grid-elements-space-around
+  .foodlymentor-product-grid
+  .woocommerce
+  ul.products
+  .product {
+  justify-content: space-around;
+}
+.foodlymentor-product-grid-elements-space-evenly
+  .foodlymentor-product-grid
+  .woocommerce
+  ul.products
+  .product {
+  justify-content: space-evenly;
+}
+.foodlymentor-product-img-right
+  .foodlymentor-product-grid
+  .product
+  .product__img {
+  order: 2;
 }
 .foodlymentor-product-img-top .foodlymentor-product-grid .product {
   flex-direction: column;
 }
 .foodlymentor-product-img-bottom .foodlymentor-product-grid .product {
-  flex-direction: column-reverse;
+  flex-direction: column;
+}
+.foodlymentor-product-img-bottom
+  .foodlymentor-product-grid
+  .product
+  .product__img {
+  order: 2;
 }
 .foodlymentor-product-grid .product__desc h2,
 .foodlymentor-product-grid .product__desc p {
   margin-bottom: 0;
+}
+.foodlymentor-product-grid .woocommerce ul.products .product span.eicon-plus {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  background: #ddd;
+  padding: 6px;
+  font-size: 20px;
+  border-radius: 50%;
+  margin-top: -12px;
 }
 .foodlymentor-product-grid .woocommerce {
   width: 100%;

@@ -24,23 +24,6 @@ $this->box_controls(
 );
 
 $this->add_responsive_control(
-    'foodlymentor_product_image_position',
-    [
-        'label' => esc_html__('Image Position', 'foodlymentor'),
-        'type' => Controls_Manager::SELECT,
-        'default' => 'left',
-        'options' => [
-            'left' => esc_html__('Left', 'foodlymentor'),
-            'right' => esc_html__('Right', 'foodlymentor'),
-            'top' => esc_html__('Top', 'foodlymentor'),
-            'bottom' => esc_html__('Bottom', 'foodlymentor'),
-        ],
-        'toggle' => true,
-        'prefix_class' => 'foodlymentor-product-img%s-',
-    ]
-);
-
-$this->add_responsive_control(
     'foodlymentor_product_grid_image_width',
     [
         'label' => esc_html__('Image Width(%)', 'foodlymentor'),

@@ -77,12 +77,24 @@ class Product_Grid extends Widget_Base
         require_once __DIR__ . '/render.php';
     }
 
+    protected function init_content_controls()
+    {
+        require_once __DIR__ . '/controls/content-controls/layout.php';
+    }
+
+    protected function init_style_controls()
+    {
+        require_once __DIR__ . '/controls/style-controls/products.php';
+        require_once __DIR__ . '/controls/style-controls/image.php';
+        require_once __DIR__ . '/controls/style-controls/color-typography.php';
+    }
+
     /**
      * build_product_query
      * @param $settings
      * @return array
      */
-    public function build_product_query($settings)
+    function build_product_query($settings)
     {
         $args = [
             'post_type' => 'product',
@@ -104,25 +116,15 @@ class Product_Grid extends Widget_Base
 
         // $args['meta_query'] = ['relation' => 'AND'];
 
+
+        // Hide out of stock products
         // if (get_option('woocommerce_hide_out_of_stock_items') == 'yes') {
-        //     $args['meta_query'][] = [
-        //         'key' => '_stock_status',
-        //         'value' => 'instock'
-        //     ];
+        $args['meta_query'][] = [
+            'key' => '_stock_status',
+            'value' => 'instock'
+        ];
         // }
 
         return $args;
-    }
-
-
-    protected function init_content_controls()
-    {
-        require_once __DIR__ . '/controls/content-controls/layout.php';
-    }
-
-    protected function init_style_controls()
-    {
-        require_once __DIR__ . '/controls/style-controls/products.php';
-        require_once __DIR__ . '/controls/style-controls/image.php';
     }
 }
