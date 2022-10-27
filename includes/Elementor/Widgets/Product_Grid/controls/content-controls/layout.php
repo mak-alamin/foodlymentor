@@ -10,6 +10,19 @@ $this->start_controls_section(
 );
 
 $this->add_control(
+    'foodlymentor_product_show_style',
+    [
+        'label' => esc_html__('Show Products', 'foodlymentor'),
+        'type' => Controls_Manager::SELECT,
+        'default' => 'only-products',
+        'options' => [
+            'only-products' => esc_html__('Only Products', 'foodlymentor'),
+            'cat-products' => esc_html__('Cat Products', 'foodlymentor'),
+        ]
+    ]
+);
+
+$this->add_control(
     'foodlymentor_product_grid_layout',
     [
         'label' => esc_html__('Layout', 'foodlymentor'),

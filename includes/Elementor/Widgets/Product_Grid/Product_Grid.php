@@ -90,7 +90,7 @@ class Product_Grid extends Widget_Base
      * @param $settings
      * @return array
      */
-    function build_product_query($settings)
+    function build_product_query($settings, $cat = '')
     {
         $args = [
             'post_type' => 'product',
@@ -99,19 +99,18 @@ class Product_Grid extends Widget_Base
             'order' => (isset($settings['order']) ? $settings['order'] : 'desc'),
         ];
 
-        // if (!empty($settings['foodlymentor_product_grid_categories'])) {
-        //     $args['tax_query'] = [
-        //         [
-        //             'taxonomy' => 'product_cat',
-        //             'field' => 'slug',
-        //             'terms' => $settings['foodlymentor_product_grid_categories'],
-        //             'operator' => 'IN',
-        //         ],
-        //     ];
-        // }
+        if (!empty($cat)) {
+            $args['tax_query'] = [
+                [
+                    'taxonomy' => 'product_cat',
+                    'field' => 'slug',
+                    'terms' => $cat,
+                    'operator' => 'IN',
+                ],
+            ];
+        }
 
-        // $args['meta_query'] = ['relation' => 'AND'];
-
+        $args['meta_query'] = ['relation' => 'AND'];
 
         // Hide out of stock products
         // if (get_option('woocommerce_hide_out_of_stock_items') == 'yes') {

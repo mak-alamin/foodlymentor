@@ -14,7 +14,7 @@ $this->start_controls_section(
 $this->add_control(
     'foodlymentor_product_grid_title_heading',
     [
-        'label' => __('Title', 'foodlymentor'),
+        'label' => __('Product Title', 'foodlymentor'),
         'type' => Controls_Manager::HEADING,
     ]
 );
@@ -28,7 +28,7 @@ $this->color_typography_controls('product_grid_title', array(
 $this->add_control(
     'foodlymentor_product_grid_desc_heading',
     [
-        'label' => __('Description', 'foodlymentor'),
+        'label' => __('Product Description', 'foodlymentor'),
         'type' => Controls_Manager::HEADING,
         'separator' => 'before',
     ]

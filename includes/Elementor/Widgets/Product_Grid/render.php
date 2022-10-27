@@ -9,8 +9,6 @@ $settings['layout_mode']    = $settings["foodlymentor_product_grid_layout"];
 $widget_id                  = $this->get_id();
 $settings['foodlymentor_widget_id'] = $widget_id;
 
-$args = $this->build_product_query($settings);
-
 // render dom
 $this->add_render_attribute('wrap', [
     'class'          => [
@@ -32,52 +30,12 @@ $this->add_render_attribute('wrap', [
 
         $settings['foodlymentor_page_id'] = $this->page_id ? $this->page_id : get_the_ID();
 
-        $query = new \WP_Query($args);
+        $product_show_style = $settings['foodlymentor_product_show_style'];
 
-        if ($query->have_posts()) {
-            $found_posts        = $query->found_posts;
-            $max_page           = ceil($found_posts / absint($args['posts_per_page']));
-            $args['max_page']   = $max_page;
-            $args['total_post'] = $found_posts;
-
-            printf('<ul class="products" data-layout-mode="%s">', esc_attr($settings["foodlymentor_product_grid_layout"]));
-
-            // echo '<pre>';
-            // print_r($query->posts);
-            // echo '</pre>';
-            // die();
-
-            foreach ($query->posts as $key => $post) {
-
-                $product = wc_get_product($post->ID);
-
-                $post_link = get_the_permalink($post->ID);
-
-                echo '<li class="product">';
-
-                echo '<a href="' . $post_link . '" data-product_id="' . $post->ID . '" class="product__img" />';
-                echo get_the_post_thumbnail($post->ID);
-                echo '</a>';
-
-                echo '<a href="' . $post_link . '" data-product_id="' . $post->ID . '" class="product__desc">';
-
-                echo '<h2 class="woocommerce-loop-product__title">' . $post->post_title . '</h2>';
-
-                echo '<p class="woocommerce-loop-product__excerpt">' . $post->post_excerpt . '</p>';
-
-                echo '<p class="woocommerce-loop-product__price">' . $product->get_price_html()  . '</p>';
-
-                echo '<span class="eicon-plus"><span>';
-
-                echo '</a>';
-
-                echo '</li>';
-            }
-            wp_reset_postdata();
-
-            echo '</ul>';
+        if ($product_show_style == 'cat-products') {
+            require_once __DIR__ . '/templates/category-products.php';
         } else {
-            _e('<p class="no-posts-found">No posts found!</p>', 'foodlymentor');
+            require_once __DIR__ . '/templates/only-products.php';
         }
         ?>
     </div>
