@@ -42,13 +42,13 @@ foreach ($all_categories as $cat) {
 
             $post_link = get_the_permalink($post->ID);
 
-            echo '<li class="product">';
+            echo '<li class="product" data-product_id="' . $post->ID . '">';
 
-            echo '<a href="' . $post_link . '" data-product_id="' . $post->ID . '" class="product__img" />';
+            echo '<a href="' . $post_link . '" class="product__img" />';
             echo get_the_post_thumbnail($post->ID);
             echo '</a>';
 
-            echo '<a href="' . $post_link . '" data-product_id="' . $post->ID . '" class="product__desc">';
+            echo '<a href="' . $post_link . '" class="product__desc">';
 
             echo '<h2 class="woocommerce-loop-product__title">' . $post->post_title . '</h2>';
 

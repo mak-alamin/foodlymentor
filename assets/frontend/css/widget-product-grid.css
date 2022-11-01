@@ -55,10 +55,18 @@
   margin-bottom: 20px;
 }
 #foodlymentor_product_popup .quantity input {
-  max-width: 50px;
+  max-width: 70px;
   border: 0;
   background: transparent;
   outline: 0;
+  padding: 3px 8px;
+  text-align: center;
+  box-shadow: none;
+}
+#foodlymentor_product_popup .quantity i {
+  color: #00ab9e;
+  font-size: 22px;
+  cursor: pointer;
 }
 
 @keyframes modalAnim {

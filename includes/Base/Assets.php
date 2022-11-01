@@ -28,6 +28,10 @@ class Assets
         foreach ($js_files as $key => $file) {
             wp_register_script(basename($file, '.js'), FOODLYMENTOR_ASSETS_URL . '/frontend/js/' . $file, array('jquery'), time(), true);
         }
+
+        wp_localize_script('widget-main', 'foodlymentorData', array(
+            'ajaxurl' => admin_url('admin-ajax.php')
+        ));
     }
 
     public function register_admin_scripts()

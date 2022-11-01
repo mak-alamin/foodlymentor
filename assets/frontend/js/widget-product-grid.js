@@ -1,52 +1,162 @@
-let modal_template = `<div id="foodlymentor_product_popup" class="modal-container">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Product Title</h2>
-            <i class="eicon-editor-close"></i>
-        </div>
-        <div class="modal-body">
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit, qui
-                voluptas. Esse, fuga! Saepe, quo laboriosam fuga tempore voluptate
-                vero enim, autem, explicabo recusandae perferendis eum sed
-                distinctio ipsam libero! Lorem ipsum dolor sit.
-            </p>
-        </div>
-        <div class="modal-footer">
-            <div class="quantity">
-                <i class="eicon-minus-circle-o"></i>
-                <input type="number" name="quantity">
-                <i class=" eicon-plus-circle-o"></i>
-            </div>
-            <button> Add To Cart </button>
-        </div>
-    </div>
-</div>`;
 (function ($) {
-  $(document).ready(function () {
-    $(document.body).append(modal_template);
+  /**
+   * =============================================
+   * Product PopUp
+   * =============================================
+   */
+  var product_popup = {
+    modal_template: `<div id="foodlymentor_product_popup" class="modal-container">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h2 class="product-title"></h2>
+                  <i class="eicon-editor-close"></i>
+              </div>
+              <div class="modal-body">
+                  <p class="product-desc"></p>
+              </div>
+              <div class="modal-footer">
+                  <div class="quantity">
+                      <i class="eicon-minus-circle-o qty_decrease"></i>
+                      <input type="text" name="product_quantity" id="product_quantity" value="1">
+                      <i class="eicon-plus-circle-o qty_increase"></i>
+                  </div>   
+              </div>
+          </div>
+      </div>`,
 
-    const closeBtn = $("#foodlymentor_product_popup .eicon-editor-close");
+    clearPopup: function () {
+      $("#foodlymentor_product_popup .product-title").text("");
+      $("#foodlymentor_product_popup .product-desc").text("");
+      $("#foodlymentor_product_popup .modal-footer").find(".product").remove();
+    },
+  };
+
+  $(document).ready(function () {
+    $(document.body).append(product_popup.modal_template);
+
+    var product_title = $("#foodlymentor_product_popup .product-title");
+    var product_desc = $("#foodlymentor_product_popup .product-desc");
+    var modal_footer = $("#foodlymentor_product_popup .modal-footer");
 
     $(document).on(
       "click",
       ".foodlymentor-product-grid li.product",
       function (e) {
         e.preventDefault();
-        $(".modal-container").show();
+
+        var product_id = parseInt($(this).data("product_id"));
+
+        jQuery.ajax({
+          method: "GET",
+          url: foodlymentorData.ajaxurl,
+          data: {
+            product_id: product_id,
+            action: "get_woo_product_data",
+          },
+          success: function (data) {
+            console.log(data);
+            product_title.text(data.name);
+            product_desc.text(data.short_desc);
+
+            modal_footer.append(data.add_to_cart_btn);
+          },
+          error: function (err) {
+            console.log(err);
+          },
+          complete: function () {
+            $(".modal-container").show();
+          },
+        });
       }
     );
 
-    closeBtn.on("click", function () {
-      $(".modal-container").fadeOut();
-    });
+    $(document).on(
+      "click",
+      "#foodlymentor_product_popup .eicon-editor-close",
+      function () {
+        $(".modal-container").fadeOut();
+        setTimeout(product_popup.clearPopup, 500);
+      }
+    );
 
-    $(document.body).on("click", function (e) {
+    $(document).on("click", "#foodlymentor_product_popup", function (e) {
       if (e.target.closest(".modal-content")) {
         return;
       }
 
       $(".modal-container").fadeOut();
+      setTimeout(product_popup.clearPopup, 500);
     });
   });
+
+  /**
+   * =============================================
+   * Product Quantity
+   * =============================================
+   */
+  $(document).on(
+    "click",
+    "#foodlymentor_product_popup .qty_increase",
+    function () {
+      var product_qty = $("#foodlymentor_product_popup input#product_quantity");
+
+      var quantity = parseInt(product_qty.val(), 10) || 1;
+
+      quantity = isNaN(quantity) ? 1 : quantity;
+
+      var max_quantity = product_qty.attr("max");
+
+      if (quantity == max_quantity) {
+        return;
+      }
+
+      quantity++;
+
+      product_qty.val(quantity);
+
+      var add_to_cart_btn = $(this)
+        .closest(".modal-footer")
+        .find("a.add_to_cart_button");
+
+      $(add_to_cart_btn).attr("data-quantity", quantity);
+    }
+  );
+
+  $(document).on(
+    "click",
+    "#foodlymentor_product_popup .qty_decrease",
+    function () {
+      var product_qty = $("#foodlymentor_product_popup input#product_quantity");
+
+      var quantity = parseInt(product_qty.val(), 10);
+
+      quantity = isNaN(quantity) ? 1 : quantity;
+
+      if (quantity == 1) {
+        return;
+      }
+
+      quantity--;
+
+      product_qty.val(quantity);
+
+      var add_to_cart_btn = $(this)
+        .closest(".modal-footer")
+        .find("a.add_to_cart_button");
+
+      $(add_to_cart_btn).attr("data-quantity", quantity);
+    }
+  );
+
+  $(document).on(
+    "change",
+    "#foodlymentor_product_popup input#product_quantity",
+    function () {
+      var add_to_cart_btn = $(this)
+        .closest(".modal-footer")
+        .find("a.add_to_cart_button");
+
+      $(add_to_cart_btn).attr("data-quantity", quantity);
+    }
+  );
 })(jQuery);

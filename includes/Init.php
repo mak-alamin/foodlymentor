@@ -15,6 +15,7 @@ final class Init
     public static function getServices()
     {
         return [
+            Base\Ajax::class,
             Base\Assets::class,
             Admin\Menus::class,
             Elementor\InitWidgets::class,
