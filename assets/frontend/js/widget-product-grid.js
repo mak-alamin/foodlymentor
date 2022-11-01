@@ -27,6 +27,7 @@
     clearPopup: function () {
       $("#foodlymentor_product_popup .product-title").text("");
       $("#foodlymentor_product_popup .product-desc").text("");
+      $("#foodlymentor_product_popup #product_quantity").val(1);
       $("#foodlymentor_product_popup .modal-footer").find(".product").remove();
     },
   };
