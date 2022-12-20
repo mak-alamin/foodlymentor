@@ -21,9 +21,15 @@
   background: #ffff;
   box-shadow: 0 10px 15px -3px #0000;
   margin: auto;
-  margin-top: 100px;
   border-radius: 5px;
   animation: modalAnim 0.5s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.admin-bar #foodlymentor_product_popup .modal-content {
+  margin-top: 32px;
 }
 #foodlymentor_product_popup .modal-header {
   background: #f2f2f2;
@@ -55,6 +61,8 @@
 }
 #foodlymentor_product_popup .modal-footer {
   text-align: center;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
 }
 #foodlymentor_product_popup .quantity {
   margin-bottom: 20px;
@@ -76,12 +84,12 @@
 
 @keyframes modalAnim {
   from {
-    margin-top: -300px;
+    margin-top: -200px;
     opacity: 0;
   }
 
   to {
-    margin-top: 100px;
+    margin-top: 0px;
     opacity: 1;
   }
 }

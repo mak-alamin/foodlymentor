@@ -34,13 +34,13 @@ add_action('cmb2_admin_init', 'foodly_additional_options_metabox');
 function foodly_additional_options_metabox()
 {
 	$cmb2_box = new_cmb2_box(array(
-		'id' => 'foodlymentor_additional_options',
+		'id' => 'foodlymentor_addi_options_box',
 		'title'         => esc_html__('Foodlymentor Additional Options', 'cmb2'),
 		'object_types'  => array('product'),
 	));
 
 	$group_field_id = $cmb2_box->add_field(array(
-		'id'          => 'foodlymentor_options_group',
+		'id'          => 'foodlymentor_addi_options',
 		'type'        => 'group',
 		'description' => esc_html__('Add additional product option to allow user can order with this product', 'cmb2'),
 		'repeatable'  => true,
@@ -64,8 +64,8 @@ function foodly_additional_options_metabox()
 		'id'               => 'option_type',
 		'type'             => 'select',
 		'options'          => array(
-			'standard' => esc_html__('Checkboxes', 'cmb2'),
-			'custom'   => esc_html__('Radio buttons', 'cmb2'),
+			'checkbox' => esc_html__('Checkboxes', 'cmb2'),
+			'radio'   => esc_html__('Radio buttons', 'cmb2'),
 		),
 	));
 
@@ -75,8 +75,8 @@ function foodly_additional_options_metabox()
 		'id'               => 'option_required',
 		'type'             => 'select',
 		'options'          => array(
-			'standard' => esc_html__('No', 'cmb2'),
-			'custom'   => esc_html__('Yes', 'cmb2'),
+			'no' => esc_html__('No', 'cmb2'),
+			'yes'   => esc_html__('Yes', 'cmb2'),
 		),
 	));
 
@@ -97,7 +97,7 @@ function foodly_additional_options_metabox()
 	$cmb2_box->add_group_field($group_field_id, array(
 		'name' => esc_html__('Options', 'cmb2'),
 		'classes' => 'foodly-stgeneral exhide-textbox exhide-quantity exhide-textarea foodly-op-ops',
-		'description' => esc_html__('Set name and price for each option', $text_domain),
+		'description' => esc_html__('Set name and price for each option', 'cmb2'),
 		'id'   => '_options',
 		'type' => 'price_options',
 		'repeatable'     => true,

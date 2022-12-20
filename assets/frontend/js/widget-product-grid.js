@@ -15,6 +15,7 @@
               <div class="modal-body">
                   <p class="product-img"></p>
                   <p class="product-desc"></p>
+                  <div class="addi_options"></div>
               </div>
               <div class="modal-footer">
                   <div class="quantity">

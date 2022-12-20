@@ -22,6 +22,8 @@ class Ajax
 
         $product_info = [];
 
+        $product_info['addi_options'] = get_post_meta($product_id, 'foodlymentor_addi_options', true);
+
         $product_info['name'] = $product->get_name();
 
         $image = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), 'single-post-thumbnail');
