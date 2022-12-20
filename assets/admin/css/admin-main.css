@@ -1,0 +1,4 @@
+#foodlymentor_additional_options .cmb-repeat-table .cmb-td {
+  display: flex;
+  gap: 10px;
+}
