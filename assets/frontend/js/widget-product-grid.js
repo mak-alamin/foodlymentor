@@ -1,4 +1,5 @@
 (function ($) {
+
   /**
    * =============================================
    * Product PopUp
@@ -12,6 +13,7 @@
                   <i class="eicon-editor-close"></i>
               </div>
               <div class="modal-body">
+                  <p class="product-img"></p>
                   <p class="product-desc"></p>
               </div>
               <div class="modal-footer">
@@ -36,6 +38,7 @@
     $(document.body).append(product_popup.modal_template);
 
     var product_title = $("#foodlymentor_product_popup .product-title");
+    var product_img = $("#foodlymentor_product_popup .product-img");
     var product_desc = $("#foodlymentor_product_popup .product-desc");
     var modal_footer = $("#foodlymentor_product_popup .modal-footer");
 
@@ -57,6 +60,9 @@
           success: function (data) {
             console.log(data);
             product_title.text(data.name);
+            product_img.html(
+              '<img src="' + data.image + '" alt="' + data.name + '">'
+            );
             product_desc.text(data.short_desc);
 
             modal_footer.append(data.add_to_cart_btn);

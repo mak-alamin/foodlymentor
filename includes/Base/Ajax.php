@@ -24,6 +24,10 @@ class Ajax
 
         $product_info['name'] = $product->get_name();
 
+        $image = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), 'single-post-thumbnail');
+
+        $product_info['image'] = $image[0];
+
         $product_info['short_desc'] = $product->get_short_description();
 
         $product_info['add_to_cart_url'] = $product->add_to_cart_url();

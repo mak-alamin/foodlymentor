@@ -2,7 +2,7 @@
 #foodlymentor_product_popup.modal-container {
   display: none;
   position: fixed;
-  top:0px;
+  top: 0px;
   z-index: 999;
   width: 100vw;
   height: 100vh;
@@ -44,9 +44,14 @@
 #foodlymentor_product_popup .modal-body {
   padding: 15px;
   text-align: justify;
-  max-height: 50vh;
+  max-height: 70vh;
   overflow: auto;
   line-height: 1.5rem;
+}
+#foodlymentor_product_popup .modal-body .product-img img {
+  height: 360px;
+  width: 100%;
+  object-fit: cover;
 }
 #foodlymentor_product_popup .modal-footer {
   text-align: center;

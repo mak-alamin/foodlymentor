@@ -50,9 +50,9 @@ foreach ($all_categories as $cat) {
 
             echo '<a href="' . $post_link . '" class="product__desc">';
 
-            echo '<h2 class="woocommerce-loop-product__title">' . $post->post_title . '</h2>';
+            echo '<h2 class="woocommerce-loop-product__title">' . mb_strimwidth($post->post_title, 0, 14, '...') . '</h2>';
 
-            echo '<p class="woocommerce-loop-product__excerpt">' . $post->post_excerpt . '</p>';
+            echo '<p class="woocommerce-loop-product__excerpt">' . mb_strimwidth($post->post_excerpt, 0, 30, '...') . '</p>';
 
             echo '<p class="woocommerce-loop-product__price">' . $product->get_price_html()  . '</p>';
 
