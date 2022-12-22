@@ -33,7 +33,6 @@ if (file_exists(dirname(__FILE__) . '/libs/cmb2.php')) {
 	require_once dirname(__FILE__) . '/libs/cmb2.php';
 }
 
-
 /**
  * Define constants
  */

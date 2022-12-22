@@ -19,6 +19,7 @@ final class Init
             Base\Assets::class,
             Admin\Menus::class,
             Elementor\InitWidgets::class,
+            WooFunctions\Cart::class,
         ];
     }
 

@@ -1,4 +1,53 @@
 /* Modal */
+#foodlymentor_product_popup .label {
+  cursor: pointer;
+  padding-left: 8px;
+  width: 100%;
+}
+#foodlymentor_product_popup .option.active .label {
+  width: 80%;
+}
+#foodlymentor_product_popup .option.active .extra_active_btn {
+  display: none;
+}
+#foodlymentor_product_popup .extra_option_name {
+  width: 100%;
+  display: inline-block;
+}
+#foodlymentor_product_popup .addi_option .option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+#foodlymentor_product_popup .addi_option .extra-quantity {
+  display: none;
+  width: 20%;
+}
+#foodlymentor_product_popup .addi_option .extra-quantity.active {
+  display: block;
+}
+#foodlymentor_product_popup .modal-footer .woocommerce-Price-amount.amount {
+  display: none;
+}
+#foodlymentor_product_popup input.extra-items-quantity {
+  max-width: 30px;
+  padding: 0;
+  text-align: center;
+  border: 0;
+  background: transparent;
+  outline: 0;
+}
+#foodlymentor_product_popup .value-button {
+  display: inline-block;
+  background: #00ab9e;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 16px;
+  cursor: pointer;
+}
 #foodlymentor_product_popup.modal-container {
   display: none;
   position: fixed;
@@ -11,9 +60,10 @@
 }
 #foodlymentor_product_popup .modal-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-radius: 5px 5px 0px 0px;
+  padding: 20px;
 }
 #foodlymentor_product_popup .modal-content {
   width: 96%;
@@ -28,14 +78,8 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.admin-bar #foodlymentor_product_popup .modal-content {
-  margin-top: 32px;
-}
-#foodlymentor_product_popup .modal-header {
-  background: #f2f2f2;
-  padding: 10px 15px;
-  color: #ffff;
-  justify-content: space-between;
+.admin-bar #foodlymentor_product_popup .modal-header {
+  padding-top: 40px;
 }
 #foodlymentor_product_popup .modal-header h2 {
   margin-bottom: 0;
@@ -53,6 +97,14 @@
   max-height: 70vh;
   overflow: auto;
   line-height: 1.5rem;
+}
+#foodlymentor_product_popup .addi_option {
+  margin-top: 25px;
+}
+#foodlymentor_product_popup .addi_option label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 #foodlymentor_product_popup .modal-body .product-img img {
   height: 360px;
@@ -84,7 +136,7 @@
 
 @keyframes modalAnim {
   from {
-    margin-top: -200px;
+    margin-top: -100px;
     opacity: 0;
   }
 

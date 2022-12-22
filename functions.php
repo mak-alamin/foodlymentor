@@ -4,6 +4,18 @@
  * Common Functions
  */
 
+function utf8ize($d)
+{
+    if (is_array($d)) {
+        foreach ($d as $k => $v) {
+            $d[$k] = utf8ize($v);
+        }
+    } else if (is_string($d)) {
+        return utf8_encode($d);
+    }
+    return $d;
+}
+
 // Metadata repeat field
 function foodlycmb2_get_price_type_options($text_domain, $value = false)
 {
