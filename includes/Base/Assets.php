@@ -17,9 +17,9 @@ class Assets
 
     public function register_frontend_scripts()
     {
-        $css_files = array_diff(scandir(FOODLYMENTOR_PLUGIN_DIR . '/assets/frontend/css'), array('.', '..'));
+        $css_files = array_diff(scandir(FOODLYMENTOR_PLUGIN_DIR . 'assets/frontend/css'), array('.', '..'));
 
-        $js_files = array_diff(scandir(FOODLYMENTOR_PLUGIN_DIR . '/assets/frontend/js'), array('.', '..'));
+        $js_files = array_diff(scandir(FOODLYMENTOR_PLUGIN_DIR . 'assets/frontend/js'), array('.', '..'));
 
         foreach ($css_files as $key => $file) {
             wp_register_style(basename($file, '.css'), FOODLYMENTOR_ASSETS_URL . '/frontend/css/' . $file, array(), time(), 'all');
@@ -36,9 +36,9 @@ class Assets
 
     public function register_admin_scripts()
     {
-        $css_files = array_diff(scandir(FOODLYMENTOR_PLUGIN_DIR . '/assets/admin/css'), array('.', '..'));
+        $css_files = array_diff(scandir(FOODLYMENTOR_PLUGIN_DIR . 'assets/admin/css'), array('.', '..'));
 
-        $js_files = array_diff(scandir(FOODLYMENTOR_PLUGIN_DIR . '/assets/admin/js'), array('.', '..'));
+        $js_files = array_diff(scandir(FOODLYMENTOR_PLUGIN_DIR . 'assets/admin/js'), array('.', '..'));
 
         foreach ($css_files as $key => $file) {
             wp_register_style(basename($file, '.css'), FOODLYMENTOR_ASSETS_URL . '/admin/css/' . $file, array(), time(), 'all');

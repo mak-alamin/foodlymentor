@@ -59,6 +59,7 @@ class Product_Grid extends Widget_Base
         return [
             'widget-main',
             'widget-product-grid',
+            'widget-product-cart',
         ];
     }
 
