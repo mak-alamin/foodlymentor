@@ -30,12 +30,6 @@ class Cart
             $addi_options[$key]['price'] = $all_addi_options[$option['group_index']]['_options'][$option['index']]['price'];
         }
 
-        // echo '<pre>';
-        // print_r($addi_options);
-        // print_r($all_addi_options);
-        // echo '</pre>';
-        // die();
-
         $cart_item_data['addi_options'] = $addi_options;
 
         return $cart_item_data;
