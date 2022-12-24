@@ -2,13 +2,13 @@
 
 /**
  * -------------------------------------------------
- * WooFunctions Cart Class
+ * WooHooks Cart Class
  * 
  * @package  Foodlymentor
  * -------------------------------------------------
  */
 
-namespace Inc\WooFunctions;
+namespace Inc\WooHooks;
 
 class Cart
 {

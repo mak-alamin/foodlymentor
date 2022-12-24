@@ -1,29 +1,18 @@
-// (function ($) {
-//   $(document).ready(function () {
-//     $("body").on(
-//       "click",
-//       "#foodlymentor_product_popup .ajax_add_to_cart",
-//       function () {
-//         console.log(foodlymentorData);
-//         var data = {
-//           action: "woocommerce_ajax_add_to_cart",
-//           product_id: parseInt($(this).data("product_id")),
-//           quantity: parseInt($(this).data("quantity")),
-//           addi_options: $(this).data("addi_options"),
-//         };
-
-//         jQuery.ajax({
-//           method: "POST",
-//           url: foodlymentorData.ajaxurl,
-//           data: data,
-//           success: function (res) {
-//             console.log(res);
-//           },
-//           error: function (err) {
-//             console.log(err);
-//           },
-//         });
-//       }
-//     );
-//   });
-// })(jQuery);
+(function ($) {
+  $("body").on("added_to_cart, removed_from_cart", function () {
+    // First, get the current cart count and total
+    $.ajax({
+      url: wc_add_to_cart_params.ajax_url,
+      type: "POST",
+      data: {
+        action: "woocommerce_get_refreshed_fragments",
+      },
+      success: function (data) {
+        // Update the mini cart count and total
+        $(".foodlymentor_shopping_cart_content").replaceWith(
+          data.fragments[".cart-contents"]
+        );
+      },
+    });
+  });
+})(jQuery);

@@ -56,9 +56,11 @@ class Mini_Cart extends \Elementor\Widget_Base
         if (empty(WC()->cart)) {
             echo '<p>Cart is empty.</p>';
         } else {
+            echo '<h2 class="cart-title">' .  _x('Your Order', 'foodlymentor') . '</h2>';
+
             echo woocommerce_mini_cart();
 
-            // WC_AJAX::get_refreshed_fragments();
+            // \WC_AJAX::get_refreshed_fragments();
         }
 
         echo '</div>';
