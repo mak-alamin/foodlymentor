@@ -34,14 +34,24 @@ class Mini_Cart extends \Elementor\Widget_Base
         return ['cart', 'shop', 'food', 'foodlymentor'];
     }
 
+    public function get_style_depends()
+    {
+        return [
+            'widget-cart',
+        ];
+    }
+
+    public function get_script_depends()
+    {
+        return [
+            'widget-main',
+            'widget-product-cart',
+        ];
+    }
+
     protected function render()
     {
-        // echo '<pre>';
-        // print_r(WC());
-        // echo '</pre>';
-        // die();
-
-        echo  '<div class="widget_shopping_cart_content">';
+        echo  '<div class="foodlymentor_shopping_cart_content">';
 
         if (empty(WC()->cart)) {
             echo '<p>Cart is empty.</p>';

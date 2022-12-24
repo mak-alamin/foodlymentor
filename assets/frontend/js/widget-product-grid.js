@@ -51,7 +51,11 @@
         if (el?._options.length) {
           el._options.forEach((option, index) => {
             html +=
-              '<div class="option" data-name="' +
+              '<div class="option" data-group_index="' +
+              i +
+              '" data-index="' +
+              index +
+              '" data-name="' +
               option.name +
               '" data-group_title="' +
               el.title +
@@ -128,6 +132,8 @@
         $.each(options, function (key, value) {
           let option = {
             group_title: $(value).data("group_title"),
+            group_index: $(value).data("group_index"),
+            index: $(value).data("index"),
             name: $(value).data("name"),
             quantity: $(value).find(".extra-quantity input").val(),
           };
@@ -140,6 +146,11 @@
         $("#foodlymentor_product_popup .add_to_cart_button").attr(
           "href",
           add_to_cart_url
+        );
+
+        $("#foodlymentor_product_popup .add_to_cart_button").attr(
+          "data-addi_options",
+          JSON.stringify(addi_options)
         );
       }
     );
