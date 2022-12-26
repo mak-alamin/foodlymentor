@@ -60,6 +60,8 @@ foreach ($all_categories as $cat) {
 
             echo '</a>';
 
+            echo '<div class="lds-dual-ring"></div>';
+
             echo '</li>';
         }
         wp_reset_postdata();

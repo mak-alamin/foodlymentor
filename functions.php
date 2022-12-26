@@ -81,6 +81,17 @@ function foodlycmb2_render_price_options_field_callback($field, $value, $object_
             'desc'  => '',
         )); ?>
     </div>
+    <div class="foodly-options foodly-unit-option">
+        <p><label for="<?php echo $field_type->_id('_unit'); ?>'"><?php esc_html_e('Unit', $text_domain) ?></label></p>
+        <?php echo $field_type->input(array(
+            'class' => '',
+            'name'  => $field_type->_name('[unit]'),
+            'id'    => $field_type->_id('_unit'),
+            'value' => $value['unit'],
+            'type'  => 'text',
+            'desc'  => '',
+        )); ?>
+    </div>
     <div class="foodly-options foodly-type-option">
         <p><label for="<?php echo $field_type->_id('_type'); ?>'"><?php esc_html_e('Type of price', $text_domain) ?></label></p>
         <?php echo $field_type->select(array(

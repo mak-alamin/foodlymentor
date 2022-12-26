@@ -2,3 +2,6 @@
   display: flex;
   gap: 10px;
 }
+.cmb2-wrap input {
+  max-width: 110px;
+}

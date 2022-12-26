@@ -50,6 +50,7 @@ class Product_Grid extends Widget_Base
     public function get_style_depends()
     {
         return [
+            'frontend-common',
             'widget-product-grid',
         ];
     }

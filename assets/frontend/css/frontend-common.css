@@ -1,0 +1,66 @@
+/* Cart */
+.foodlymentor_shopping_cart_content dd,
+.shop_table dd,
+.foodlymentor_shopping_cart_content dd p,
+.shop_table dd p {
+  margin: 0;
+}
+.foodlymentor_shopping_cart_content dl.variation,
+.shop_table dl.variation {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  column-gap: 10px;
+  font-size: 13px;
+  height: 22px;
+  overflow: hidden;
+  transition: 0.3s all;
+}
+.foodlymentor_shopping_cart_content dl.variation.open,
+.shop_table dl.variation.open {
+  height: 100%;
+}
+.foodlymentor_shopping_cart_content a.remove.remove_from_cart_button,
+.shop_table a.remove.remove_from_cart_button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  margin-top: -10px;
+}
+.foodlymentor_shopping_cart_content dt.variation-Additionals,
+.shop_table dt.variation-Additionals {
+  cursor: pointer;
+}
+.woocommerce-checkout-review-order-table dl.variation {
+  padding-left: 15px;
+}
+
+/* Loader */
+.lds-dual-ring {
+  display: none;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -15px;
+  margin-left: -15px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 2px solid #019cde;
+  border-color: #0274be transparent #0274be transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

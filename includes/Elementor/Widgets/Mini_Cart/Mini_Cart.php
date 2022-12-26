@@ -42,6 +42,7 @@ class Mini_Cart extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         return [
+            'frontend-common',
             'widget-cart',
         ];
     }

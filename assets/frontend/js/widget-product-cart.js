@@ -1,7 +1,8 @@
 (function ($) {
+  /**
+   * Refresh cart
+   */
   function foodlymentorRefreshCart() {
-    console.log("added.");
-    // First, get the current cart count and total
     $.ajax({
       url: wc_add_to_cart_params.ajax_url,
       type: "POST",

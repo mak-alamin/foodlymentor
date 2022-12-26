@@ -50,6 +50,12 @@
 
         if (el?._options.length) {
           el._options.forEach((option, index) => {
+            console.log(option);
+
+            let option_price = option.price ? option.price : 0;
+
+            option_price = parseFloat(option_price).toFixed(2);
+
             html +=
               '<div class="option" data-group_index="' +
               i +
@@ -57,6 +63,8 @@
               index +
               '" data-name="' +
               option.name +
+              '" data-price="' +
+              option_price +
               '" data-group_title="' +
               el.title +
               '"><div class="extra-quantity">';
@@ -65,7 +73,11 @@
               '<div class="value-button extra_decrease" value="Decrease Quantity">-</div>';
 
             html +=
-              '<input type="text" name="ex_options_qty_0" value="1" min="1" class="extra-items-quantity"></input>';
+              '<input type="text" name="ex_options_qty_0" value="1" min="' +
+              el.min_selection +
+              '" max="' +
+              el.max_selection +
+              '" class="extra-items-quantity"></input>';
 
             html +=
               '<div class="value-button extra_increase" value="Increase Quantity">+</div>';
@@ -77,19 +89,14 @@
 
             html += "<div class='label'>";
 
-            // <input type='" +
-            //   el.option_type +
-            //   "' name='addi_options_" +
-            //   i +
-            //   "[]' value='" +
-            //   index +
-            //   "'></input>
-
             html += "<strong class='extra_option_name'>";
 
             html += option.name;
 
-            html += '<span class="price">+$1.00</span></strong></div></div>';
+            html +=
+              '<span class="woocommerce-Price-amount"> (+ $' +
+              option_price +
+              ")</span></strong></div></div>";
           });
         }
 
@@ -167,6 +174,7 @@
       }
     );
 
+    // Extra Quantity Increase
     $("body").on("click", ".extra_increase", function () {
       let quantity =
         parseInt($(this).siblings("input.extra-items-quantity").val(), 10) || 1;
@@ -176,20 +184,19 @@
 
       $(this).siblings("input.extra-items-quantity").val(quantity);
 
-      let extra_price = $(this)
-        .closest("span")
-        .find(".ex-options")
-        .data("price");
+      let extra_price = $(this).closest(".option").data("price");
 
       $(this)
-        .closest("span")
+        .closest(".option")
         .find(".woocommerce-Price-amount")
         .html(
-          '<span class="woocommerce-Price-currencySymbol">$</span>' +
-            parseFloat(extra_price * quantity).toFixed(2)
+          '(+ <span class="woocommerce-Price-currencySymbol">$</span>' +
+            parseFloat(extra_price * quantity).toFixed(2) +
+            ")"
         );
     });
 
+    // Extra Quantity decrease
     $("body").on("click", ".extra_decrease", function () {
       let quantity = parseInt(
         $(this).siblings("input.extra-items-quantity").val(),
@@ -211,32 +218,28 @@
 
       $(this).siblings("input.extra-items-quantity").val(quantity);
 
-      let extra_price = $(this)
-        .closest("span")
-        .find(".ex-options")
-        .data("price");
+      let extra_price = $(this).closest(".option").data("price");
 
       $(this)
-        .closest("span")
+        .closest(".option")
         .find(".woocommerce-Price-amount")
         .html(
-          '<span class="woocommerce-Price-currencySymbol">$</span>' +
-            parseFloat(extra_price * quantity).toFixed(2)
+          '(+ <span class="woocommerce-Price-currencySymbol">$</span>' +
+            parseFloat(extra_price * quantity).toFixed(2) +
+            ")"
         );
     });
 
     $("body").on("change", "input.extra-items-quantity", function () {
-      let extra_price = $(this)
-        .closest("span")
-        .find(".ex-options")
-        .data("price");
+      let extra_price = $(this).closest(".option").data("price");
 
       $(this)
-        .closest("span")
+        .closest(".option")
         .find(".woocommerce-Price-amount")
         .html(
-          '<span class="woocommerce-Price-currencySymbol">$</span>' +
-            parseFloat(extra_price * $(this).val()).toFixed(2)
+          '(+ <span class="woocommerce-Price-currencySymbol">$</span>' +
+            parseFloat(extra_price * $(this).val()).toFixed(2) +
+            ")"
         );
     });
 
@@ -245,12 +248,13 @@
      * Open Product PopUp
      * =======================================
      */
-    console.log(".foodlymentor-product-grid .product");
     $("body").on(
       "click",
       ".foodlymentor-product-grid .product, .foodlymentor-product-grid .product a",
       function (e) {
         e.preventDefault();
+
+        $(e.target).closest(".product").find(".lds-dual-ring").show();
 
         var product_id = parseInt($(this).data("product_id"));
 
@@ -262,7 +266,6 @@
             action: "get_woo_product_data",
           },
           success: function (data) {
-            console.log(data);
             product_title.text(data.name);
             product_img.html(
               '<img src="' + data.image + '" alt="' + data.name + '">'
@@ -273,13 +276,14 @@
             addi_options.html(foodlyAddiOptionsHtml(data));
 
             modal_footer.append(data.add_to_cart_btn);
+
+            $(".modal-container").show();
+
+            $(e.target).closest(".product").find(".lds-dual-ring").hide();
           },
 
           error: function (err) {
             console.log(err);
-          },
-          complete: function () {
-            $(".modal-container").show();
           },
         });
       }

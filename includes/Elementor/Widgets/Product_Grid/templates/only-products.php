@@ -30,6 +30,8 @@ if ($query->have_posts()) {
 
         echo '</a>';
 
+        echo '<div class="lds-dual-ring"></div>';
+
         echo '</li>';
     }
     wp_reset_postdata();
