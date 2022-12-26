@@ -1,14 +1,19 @@
 <?php
 
 /**
+ * -------------------------------
+ * 
+ * Mini_Cart Widget Class
+ * 
  * @package  Foodlymentor
+ * 
+ * -------------------------------
  */
 
 namespace Inc\Elementor\Widgets\Mini_Cart;
 
 class Mini_Cart extends \Elementor\Widget_Base
 {
-
     public function get_name()
     {
         return 'foodlymentor_cart';
@@ -58,9 +63,11 @@ class Mini_Cart extends \Elementor\Widget_Base
         } else {
             echo '<h2 class="cart-title">' .  _x('Your Order', 'foodlymentor') . '</h2>';
 
+            echo  '<div class="foodlymentor_mini_cart">';
+
             echo woocommerce_mini_cart();
 
-            // \WC_AJAX::get_refreshed_fragments();
+            echo '</div>';
         }
 
         echo '</div>';
