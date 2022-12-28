@@ -1,24 +1,28 @@
 (function ($) {
   $(document).ready(function () {
-    $(".foodlymentor_cat_menu_list a").on("click", function () {
-      $(".dropbtn").removeClass("active");
-      $(".dropbtn").text("More" + "...");
+    var dropDownButton = $(".foodlymentor_cat_menu_list .dropbtn"),
+      dropDownLink = $(".foodlymentor_cat_menu_list a");
+
+    dropDownLink.on("click", function () {
+      dropDownButton.removeClass("active");
+      dropDownButton.text("More" + "...");
+      $(this).addClass("active");
     });
 
     $("#moreDropdown a").on("click", function () {
-      $(".dropbtn").addClass("active");
-      $(".dropbtn").text($(this).text());
+      dropDownLink.removeClass("active");
+      dropDownButton.addClass("active");
+      $(this).addClass("active");
+      dropDownButton.text($(this).text());
     });
 
     $(window).scroll(function () {
-      if ($("#moreDropdown .ex-menu-item-active").length) {
-        $(".dropbtn")
-          .text($("#moreDropdown .ex-menu-item-active").text())
-          .addClass("ex-menu-item-active");
+      if ($("#moreDropdown .active").length) {
+        dropDownButton
+          .text($("#moreDropdown .active").text())
+          .addClass("active");
       } else {
-        $(".dropbtn")
-          .removeClass("ex-menu-item-active")
-          .text("More" + "...");
+        dropDownButton.removeClass("active").text("More" + "...");
       }
     });
   });

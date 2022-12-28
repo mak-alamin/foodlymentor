@@ -1,14 +1,19 @@
-.elementor-widget-foodlymentor_cat_menu .elementor-widget-container a {
+.elementor-widget-foodlymentor_cat_menu .foodlymentor_cat_menu_list a {
   padding: 0px 15px;
-  background: #0274be;
+  background: #ffffff;
   border-radius: 30px;
-  color: #fff;
+  color: #0274be;
   display: inline-block;
 }
+.elementor-widget-foodlymentor_cat_menu .foodlymentor_cat_menu_list a.active {
+  background: #0274be;
+}
 .foodlymentor-cat-menu-layout-horizontal.elementor-widget-foodlymentor_cat_menu
-  .elementor-widget-container
   a:not(:last-child) {
   margin-right: 20px;
+}
+.foodlymentor-cat-menu-layout-horizontal .more-menu-filter.dropdown {
+  float: right;
 }
 .foodlymentor-cat-menu-layout-vertical.elementor-widget-foodlymentor_cat_menu
   .foodlymentor_cat_menu_list {
@@ -16,17 +21,29 @@
   flex-direction: column;
 }
 
+.foodlymentor-cat-menu-layout-vertical
+  .foodlymentor_cat_menu_list
+  .more-menu-filter.dropdown {
+  width: 100%;
+}
+.foodlymentor-cat-menu-layout-vertical
+  .foodlymentor_cat_menu_list
+  .more-menu-filter.dropdown
+  .dropbtn {
+  width: 100%;
+}
 .dropbtn {
-  color: #00b8a9;
+  color: #0274be;
   padding: 4px 18px;
   font-size: 16px;
-  border: 1px solid #00b8a9;
+  border: 1px solid #0274be;
   cursor: pointer;
   background: #fff;
+  border-radius: 30px;
 }
 .dropbtn.active {
   color: #fff;
-  background: #00b8a9;
+  background: #0274be;
 }
 button.dropbtn:after {
   content: "\2193";
@@ -37,7 +54,6 @@ button.dropbtn:after {
 }
 .dropdown {
   position: relative;
-  display: inline-block;
 }
 
 .dropdown-content {
@@ -51,6 +67,7 @@ button.dropbtn:after {
   z-index: 1;
   border: 1px solid rgba(0, 0, 0, 0.04);
   right: 0;
+  padding: 10px;
 }
 
 .dropdown-content a {
@@ -58,6 +75,8 @@ button.dropbtn:after {
   padding: 12px 16px;
   text-decoration: none;
   margin-bottom: 5px;
+  border-radius: 30px;
+  margin-right: 0;
 }
 #moreDropdown.dropdown-content a {
   display: block;
@@ -67,9 +86,9 @@ button.dropbtn:after {
 }
 .dropdown button:hover,
 .dropdown button:focus {
-  color: #00b8a9;
+  color: #0274be;
   background-color: #fff;
-  border: 1px solid #00b8a9;
+  border: 1px solid #0274be;
 }
 .show {
   display: block;
