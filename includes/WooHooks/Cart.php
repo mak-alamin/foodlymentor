@@ -45,6 +45,10 @@ class Cart
     {
         $addi_options = json_decode(str_replace('\"', '"', $_REQUEST['addi_options']), true);
 
+        if (empty($addi_options)) {
+            return $cart_item_data;
+        }
+
         $all_addi_options = get_post_meta($product_id, 'foodlymentor_addi_options', true);
 
         foreach ($addi_options as $key => $option) {

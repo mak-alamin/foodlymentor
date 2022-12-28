@@ -32,7 +32,7 @@ foreach ($all_categories as $cat) {
             continue;
         }
 
-        echo '<h3 class="category-text"><a href="' . get_term_link($cat->slug, 'product_cat') . '">' . $cat->name . '</a></h3>';
+        echo '<h3 class="category-text" id="' . $cat->slug . '"><a href="' . get_term_link($cat->slug, 'product_cat') . '">' . $cat->name . '</a></h3>';
 
         printf('<ul class="products" data-layout-mode="%s">', esc_attr($settings["foodlymentor_product_grid_layout"]));
 

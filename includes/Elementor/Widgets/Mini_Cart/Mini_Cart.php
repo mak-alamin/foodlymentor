@@ -59,16 +59,20 @@ class Mini_Cart extends \Elementor\Widget_Base
     {
         echo  '<div class="foodlymentor_shopping_cart_content">';
 
-        if (empty(WC()->cart)) {
-            echo '<p>Cart is empty.</p>';
+        if (is_admin()) {
+            // global $woocommerce;
         } else {
-            echo '<h2 class="cart-title">' .  _x('Your Order', 'foodlymentor') . '</h2>';
+            if (empty(WC()->cart)) {
+                echo '<p>' . _x('Cart is empty.', 'foodlymentor') . '</p>';
+            } else {
+                echo '<h2 class="cart-title">' .  _x('Your Order', 'foodlymentor') . '</h2>';
 
-            echo  '<div class="foodlymentor_mini_cart">';
+                echo  '<div class="foodlymentor_mini_cart">';
 
-            echo woocommerce_mini_cart();
+                echo woocommerce_mini_cart();
 
-            echo '</div>';
+                echo '</div>';
+            }
         }
 
         echo '</div>';

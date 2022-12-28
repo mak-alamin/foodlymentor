@@ -1,0 +1,76 @@
+.elementor-widget-foodlymentor_cat_menu .elementor-widget-container a {
+  padding: 0px 15px;
+  background: #0274be;
+  border-radius: 30px;
+  color: #fff;
+  display: inline-block;
+}
+.foodlymentor-cat-menu-layout-horizontal.elementor-widget-foodlymentor_cat_menu
+  .elementor-widget-container
+  a:not(:last-child) {
+  margin-right: 20px;
+}
+.foodlymentor-cat-menu-layout-vertical.elementor-widget-foodlymentor_cat_menu
+  .foodlymentor_cat_menu_list {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropbtn {
+  color: #00b8a9;
+  padding: 4px 18px;
+  font-size: 16px;
+  border: 1px solid #00b8a9;
+  cursor: pointer;
+  background: #fff;
+}
+.dropbtn.active {
+  color: #fff;
+  background: #00b8a9;
+}
+button.dropbtn:after {
+  content: "\2193";
+  padding-left: 5px;
+}
+.more-menu-filter.dropdown {
+  margin-left: auto;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 240px;
+  overflow: hidden;
+  overflow-y: auto;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  right: 0;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+#moreDropdown.dropdown-content a {
+  display: block;
+}
+.dropdown a:hover {
+  background-color: #ddd;
+}
+.dropdown button:hover,
+.dropdown button:focus {
+  color: #00b8a9;
+  background-color: #fff;
+  border: 1px solid #00b8a9;
+}
+.show {
+  display: block;
+}

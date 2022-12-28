@@ -286,6 +286,9 @@
   padding: 10px;
   position: relative;
 }
+.foodlymentor-product-img-left .foodlymentor-product-grid .woocommerce ul.products .product, .foodlymentor-product-img-right .foodlymentor-product-grid .woocommerce ul.products .product{
+  flex-direction: row;
+}
 
 .foodlymentor-product-grid-elements-space-between
   .foodlymentor-product-grid
