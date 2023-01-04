@@ -29,3 +29,18 @@
   max-width: 60px;
   margin-right: 10px;
 }
+.woocommerce-mini-cart__total.total {
+  display: flex;
+  justify-content: space-between;
+}
+.foodlymentor_mini_cart .woocommerce-mini-cart__buttons.buttons {
+  margin-bottom: 0;
+}
+.foodlymentor_mini_cart .button.wc-forward {
+  display: none;
+  text-align: center;
+}
+.foodlymentor_mini_cart .button.wc-forward.checkout {
+  display: inline-block;
+  width: 100%;
+}

@@ -21,4 +21,6 @@ $this->box_controls(
     )
 );
 
+$this->position_controls('product_plus_icon', '.foodlymentor-product-grid .woocommerce ul.products li.product span.eicon-plus');
+
 $this->end_controls_section();

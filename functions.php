@@ -3,7 +3,6 @@
 /**
  * Common Functions
  */
-
 function utf8ize($d)
 {
     if (is_array($d)) {

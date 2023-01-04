@@ -336,7 +336,7 @@
 .foodlymentor-product-grid .woocommerce ul.products .product span.eicon-plus {
   position: absolute;
   top: 50%;
-  right: 5px;
+  left: 85%;
   background: #ddd;
   padding: 6px;
   font-size: 20px;
@@ -2892,9 +2892,6 @@
   .page-numbers:focus {
   color: #ffffff;
   background: rgba(0, 0, 0, 0.7411764706);
-}
-.foodlymentor-product-grid .woocommerce ul.products .product {
-  overflow-y: auto;
 }
 .foodlymentor-product-grid .foodlymentor-load-more-button-wrap {
   clear: both;
