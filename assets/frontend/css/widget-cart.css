@@ -1,6 +1,11 @@
 .foodlymentor_shopping_cart_content .cart-title {
   margin-bottom: 10px;
 }
+.foodlymentor_mini_cart .woocommerce-mini-cart {
+  max-height: 400px;
+  overflow: hidden;
+  overflow-y: auto;
+}
 .foodlymentor_shopping_cart_content ul {
   list-style: none;
   margin: 0;

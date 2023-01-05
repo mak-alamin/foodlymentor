@@ -1,45 +1,46 @@
 <?php
-
-$taxonomy     = 'product_cat';
-$orderby      = 'name';
-$show_count   = 0;      // 1 for yes, 0 for no
-$pad_counts   = 0;      // 1 for yes, 0 for no
-$hierarchical = 1;      // 1 for yes, 0 for no  
-$title        = '';
-$empty        = 0;
-
-$args = array(
-    'taxonomy'     => $taxonomy,
-    'orderby'      => $orderby,
-    'show_count'   => $show_count,
-    'pad_counts'   => $pad_counts,
-    'hierarchical' => $hierarchical,
-    'title_li'     => $title,
-    'hide_empty'   => $empty
-);
-
-$all_categories = get_categories($args);
-
 $settings = $this->get_settings_for_display();
+?>
+<div class="foodlymentor_cat_menu_list"></div>
 
-$more_filter_html = '';
+<script>
+    (function($) {
+        let menu_categories = JSON.parse('<?php echo $this->get_menu_categories(); ?>');
 
-echo '<div class="foodlymentor_cat_menu_list">';
+        let $cat_menu_html = '';
+        let $more_menu_items = '';
+        let $more_menu_html = '';
 
-foreach ($all_categories as $key => $cat) {
-    if ($key > 1) {
-        $more_filter_html .= '<a href="#' . $cat->slug . '">' . $cat->name . '</a>';
-        continue;
-    }
+        let $category_width = 0;
+        let $font_size_factor = 16;
 
-    if ($cat->category_parent == 0) {
-        echo '<a href="#' . $cat->slug . '">' . $cat->name . '</a>';
-    }
-}
+        if (window.innerWidth < 768) { // Mobile
+            $font_size_factor = '<?php echo $settings['foodlymentor_font_size_factor_mobile']['size']; ?>';
+        } else if (window.innerWidth >= 768 && window.innerWidth < 992) { // Tablet
+            $font_size_factor = '<?php echo $settings['foodlymentor_font_size_factor_tablet']['size']; ?>';
+        } else { // Desktop
+            $font_size_factor = '<?php echo $settings['foodlymentor_font_size_factor']['size']; ?>'
+        }
 
-echo '<div class="more-menu-filter dropdown">
-<button class="dropbtn">' . _x('More...', 'woocommerce-food') . '</button>
-<div id="moreDropdown" class="dropdown-content"> ' . $more_filter_html . ' </div>
-</div>';
+        $.each(menu_categories, function(key, cat) {
+            if (cat.category_parent == 0) {
+                $category_width += parseInt(cat.slug.length) * parseInt($font_size_factor);
 
-echo '</div>';
+                if ($category_width > window.innerWidth) {
+                    $more_menu_items += '<a href="#' + cat.slug + '">' + cat.name + '</a>';
+                } else {
+                    $cat_menu_html += '<a href="#' + cat.slug +
+                        '">' + cat.name +
+                        '</a>';
+                }
+            }
+        });
+
+        if ($more_menu_items != '') {
+            $more_menu_html += '<div class="more-menu-filter dropdown"><button class="dropbtn">More...</button><div id="moreDropdown" class="dropdown-content">' + $more_menu_items + '</div></div>';
+        }
+
+        $(".foodlymentor_cat_menu_list").append($cat_menu_html);
+        $(".foodlymentor_cat_menu_list").append($more_menu_html);
+    })(jQuery);
+</script>

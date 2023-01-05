@@ -5,3 +5,6 @@
 .cmb2-wrap input {
   max-width: 110px;
 }
+.elementor-control-foodlymentor_font_size_factor .elementor-slider-input input {
+  visibility: hidden;
+}

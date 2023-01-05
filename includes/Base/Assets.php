@@ -13,6 +13,8 @@ class Assets
         add_action('wp_enqueue_scripts', [$this, 'register_frontend_scripts']);
 
         add_action('admin_enqueue_scripts', [$this, 'register_admin_scripts']);
+
+        add_action('elementor/editor/after_enqueue_styles', [$this, 'elementor_editor_styles']);
     }
 
     public function register_frontend_scripts()
@@ -34,7 +36,7 @@ class Assets
         ));
     }
 
-    public function register_admin_scripts()
+    public function register_admin_scripts($hook)
     {
         $css_files = array_diff(scandir(FOODLYMENTOR_PLUGIN_DIR . 'assets/admin/css'), array('.', '..'));
 
@@ -47,5 +49,12 @@ class Assets
         foreach ($js_files as $key => $file) {
             wp_register_script(basename($file, '.js'), FOODLYMENTOR_ASSETS_URL . '/admin/js/' . $file, array('jquery'), time(), true);
         }
+    }
+
+    function elementor_editor_styles()
+    {
+        wp_register_style('admin-main', FOODLYMENTOR_ASSETS_URL . '/admin/css/admin-main.css', array(), time(), 'all');
+
+        wp_enqueue_style('admin-main');
     }
 }

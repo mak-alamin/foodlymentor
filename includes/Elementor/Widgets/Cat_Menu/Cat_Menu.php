@@ -65,4 +65,35 @@ class Cat_Menu extends Widget_Base
     {
         require_once __DIR__ . '/render.php';
     }
+
+    public function get_menu_categories()
+    {
+        $taxonomy     = 'product_cat';
+        $orderby      = 'name';
+        $show_count   = 0;      // 1 for yes, 0 for no
+        $pad_counts   = 0;      // 1 for yes, 0 for no
+        $hierarchical = 1;      // 1 for yes, 0 for no  
+        $title        = '';
+        $empty        = 0;
+
+        $args = array(
+            'taxonomy'     => $taxonomy,
+            'orderby'      => $orderby,
+            'show_count'   => $show_count,
+            'pad_counts'   => $pad_counts,
+            'hierarchical' => $hierarchical,
+            'title_li'     => $title,
+            'hide_empty'   => $empty
+        );
+
+        $all_categories = get_categories($args);
+
+        foreach ($all_categories as $key => $cat) {
+            if ($cat->category_parent != 0) {
+                unset($all_categories[$key]);
+            }
+        }
+
+        return json_encode($all_categories);
+    }
 }
