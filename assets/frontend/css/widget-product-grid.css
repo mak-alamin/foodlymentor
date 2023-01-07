@@ -12,7 +12,8 @@
 }
 #foodlymentor_product_popup .extra_option_name {
   width: 100%;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
 }
 #foodlymentor_product_popup .addi_option .option {
   display: flex;
@@ -58,13 +59,6 @@
   overflow: auto;
   background: #0016148c;
 }
-#foodlymentor_product_popup .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 5px 5px 0px 0px;
-  padding: 20px;
-}
 #foodlymentor_product_popup .modal-content {
   width: 96%;
   max-width: 560px;
@@ -77,12 +71,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
-.admin-bar #foodlymentor_product_popup .modal-header {
-  padding-top: 40px;
+.admin-bar #foodlymentor_product_popup .modal-content {
+  margin-top: 32px;
+  animation: none;
 }
 #foodlymentor_product_popup .modal-header h2 {
   margin-bottom: 0;
+  width: 100%;
 }
 #foodlymentor_product_popup .eicon-editor-close {
   padding: 5px;
@@ -90,6 +87,9 @@
   font-size: 22px;
   border-radius: 50%;
   cursor: pointer;
+  position: absolute;
+  left: 90%;
+  top: 20px;
 }
 #foodlymentor_product_popup .modal-body {
   padding: 15px;
@@ -116,8 +116,14 @@
   border-top: 1px solid #ddd;
   padding-top: 20px;
 }
-#foodlymentor_product_popup .quantity {
-  margin-bottom: 20px;
+#foodlymentor_product_popup .add_to_cart_inline {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+#foodlymentor_product_popup .modal-footer .quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #foodlymentor_product_popup .quantity input {
   max-width: 70px;
@@ -286,7 +292,16 @@
   padding: 10px;
   position: relative;
 }
-.foodlymentor-product-img-left .foodlymentor-product-grid .woocommerce ul.products .product, .foodlymentor-product-img-right .foodlymentor-product-grid .woocommerce ul.products .product{
+.foodlymentor-product-img-left
+  .foodlymentor-product-grid
+  .woocommerce
+  ul.products
+  .product,
+.foodlymentor-product-img-right
+  .foodlymentor-product-grid
+  .woocommerce
+  ul.products
+  .product {
   flex-direction: row;
 }
 

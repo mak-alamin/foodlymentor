@@ -18,14 +18,19 @@ $this->start_controls_tabs('foodlymentor_cat_menu_items');
 
 $this->start_controls_tab('foodlymentor_cat_menu_items_tabs_normal', ['label' => esc_html__('Normal', 'foodlymentor')]);
 
-$this->color_typography_controls('cat_menu_items', array(
-    '.foodlymentor_cat_menu_list a',
+$this->color_typography_controls(array(
+    'id' => 'cat_menu_items',
+    'selectors' => array(
+        '{{WRAPPER}} .foodlymentor_cat_menu_list a',
+    )
 ));
 
 $this->box_controls(
-    'cat_menu_items',
     array(
-        '.foodlymentor_cat_menu_list a',
+        'id' => 'cat_menu_items',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_cat_menu_list a',
+        )
     )
 );
 
@@ -33,14 +38,19 @@ $this->end_controls_tab();
 
 $this->start_controls_tab('foodlymentor_cat_menu_items_tabs_active', ['label' => esc_html__('Active', 'foodlymentor')]);
 
-$this->color_typography_controls('cat_menu_items_active', array(
-    '.foodlymentor_cat_menu_list a.active',
+$this->color_typography_controls(array(
+    'id' => 'cat_menu_items_active',
+    'selectors' => array(
+        '{{WRAPPER}} .foodlymentor_cat_menu_list a.active',
+    )
 ));
 
 $this->box_controls(
-    'cat_menu_items_active',
     array(
-        '.foodlymentor_cat_menu_list a.active',
+        'id' => 'cat_menu_items_active',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_cat_menu_list a.active',
+        )
     )
 );
 

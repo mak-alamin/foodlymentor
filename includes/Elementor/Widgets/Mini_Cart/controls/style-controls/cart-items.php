@@ -16,17 +16,21 @@ $this->start_controls_section(
 );
 
 $this->color_typography_controls(
-    'cart_item',
     array(
-        '.foodlymentor_shopping_cart_content .woocommerce-mini-cart-item.mini_cart_item',
-    ),
-    array('alignment') // disable
+        'id' => 'cart_item',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_shopping_cart_content .woocommerce-mini-cart-item.mini_cart_item',
+        ),
+        'disable_controls' => array('alignment')
+    )
 );
 
 $this->box_controls(
-    'cart_item',
     array(
-        '.foodlymentor_shopping_cart_content .woocommerce-mini-cart-item.mini_cart_item',
+        'id' => 'cart_item',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_shopping_cart_content .woocommerce-mini-cart-item.mini_cart_item',
+        )
     )
 );
 
@@ -43,17 +47,21 @@ $this->start_controls_section(
 );
 
 $this->color_typography_controls(
-    'cart_subtotal',
     array(
-        '.foodlymentor_shopping_cart_content .woocommerce-mini-cart__total.total',
-    ),
-    array('alignment') // disable
+        'id' => 'cart_subtotal',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_shopping_cart_content .woocommerce-mini-cart__total.total',
+        ),
+        'disable_controls' => array('alignment')
+    )
 );
 
 $this->box_controls(
-    'cart_subtotal',
     array(
-        '.foodlymentor_shopping_cart_content .woocommerce-mini-cart__total.total',
+        'id' => 'cart_subtotal',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_shopping_cart_content .woocommerce-mini-cart__total.total',
+        )
     )
 );
 
@@ -69,24 +77,32 @@ $this->start_controls_section(
 );
 
 $this->color_typography_controls(
-    'cart_checkout_btn',
     array(
-        '.foodlymentor_mini_cart .button.wc-forward.checkout',
-        '.foodlymentor_mini_cart .woocommerce-mini-cart__buttons.buttons'
-    ),
+        'id' => 'cart_checkout_btn',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_mini_cart .button.wc-forward.checkout',
+        ),
+        'disable_controls' => array('alignment')
+    )
 );
 
 $this->box_controls(
-    'cart_checkout_btn',
     array(
-        '.foodlymentor_mini_cart .button.wc-forward.checkout',
+        'id' => 'cart_checkout_btn',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_mini_cart .button.wc-forward.checkout',
+        ),
     )
 );
 
 $this->size_controls(
-    'cart_checkout_btn',
-    '.foodlymentor_mini_cart .button.wc-forward.checkout',
-    array('height') // disable
+    array(
+        'id' => 'cart_checkout_btn',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_mini_cart .button.wc-forward.checkout',
+        ),
+        'disable_controls' => array('height', 'max-height')
+    )
 );
 
 $this->end_controls_section();

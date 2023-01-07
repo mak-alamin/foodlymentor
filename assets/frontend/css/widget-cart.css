@@ -46,6 +46,7 @@
   text-align: center;
 }
 .foodlymentor_mini_cart .button.wc-forward.checkout {
-  display: inline-block;
+  display: block;
   width: 100%;
+  margin: 0 auto !important;
 }

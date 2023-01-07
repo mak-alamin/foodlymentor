@@ -7,6 +7,9 @@ use Elementor\Group_Control_Border;
 
 trait Controls
 {
+    /**
+     * Require control files
+     */
     public function require_control_files($dir)
     {
         $content_controls = array_diff(scandir($dir . '/controls/content-controls'), array('.', '..'));
@@ -24,22 +27,30 @@ trait Controls
 
     /**
      * Color & Typography Controls
-     * 
-     * @return void
      */
-    public function color_typography_controls($element_name = '', $selectors = array(), $disable_controls = array())
+    public function color_typography_controls(array $args)
     {
+        $defaults = array(
+            'id' => '',
+            'selectors' => array(),
+            'disable_controls' => array()
+        );
+
+        $args = wp_parse_args($args, $defaults);
+
+        extract($args);
+
         $color_selectors = array();
         $align_selectors = array();
 
         foreach ($selectors as $key => $selector) {
-            $color_selectors['{{WRAPPER}} ' . $selector] = 'color: {{VALUE}};';
-            $align_selectors['{{WRAPPER}} ' . $selector] = 'text-align: {{VALUE}};';
+            $color_selectors[$selector] = 'color: {{VALUE}};';
+            $align_selectors[$selector] = 'text-align: {{VALUE}};';
         }
 
         // Color
         $this->add_control(
-            'foodlymentor_' . $element_name . '_color',
+            'foodlymentor_' . $id . '_color',
             [
                 'label' => __('Text Color', 'foodlymentor'),
                 'type' => Controls_Manager::COLOR,
@@ -52,15 +63,15 @@ trait Controls
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'foodlymentor_' . $element_name . '_typography',
-                'selector' => '{{WRAPPER}} ' . $selectors[0],
+                'name' => 'foodlymentor_' . $id . '_typography',
+                'selector' => $selectors[0],
             ]
         );
 
         // Alignment
         if (!in_array('alignment', $disable_controls)) {
             $this->add_control(
-                'foodlymentor_' . $element_name . '_alignment',
+                'foodlymentor_' . $id . '_alignment',
                 [
                     'type' => \Elementor\Controls_Manager::CHOOSE,
                     'label' => esc_html__('Alignment', 'foodlymentor'),
@@ -87,29 +98,37 @@ trait Controls
 
     /**
      * CSS Box Style controls
-     * 
-     * @return void
      */
-    public function box_controls($element_name = '', $selectors = array(), $disable_controls = array())
+    public function box_controls(array $args)
     {
+        $defaults = array(
+            'id' => '',
+            'selectors' => array(),
+            'disable_controls' => array()
+        );
+
+        $args = wp_parse_args($args, $defaults);
+
+        extract($args);
+
         $bg_selectors = array();
         $padding_selectors = array();
         $margin_selectors = array();
-        $border_radius_selectors = array();
+        $b_radius_selectors = array();
 
         foreach ($selectors as $key => $selector) {
-            $bg_selectors['{{WRAPPER}} ' . $selector] = 'background-color: {{VALUE}};';
+            $bg_selectors[$selector] = 'background-color: {{VALUE}};';
 
-            $padding_selectors['{{WRAPPER}} ' . $selector] = 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};';
+            $padding_selectors[$selector] = 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};';
 
-            $margin_selectors['{{WRAPPER}} ' . $selector] = 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};';
+            $margin_selectors[$selector] = 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};';
 
-            $border_radius_selectors['{{WRAPPER}} ' . $selector] = 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};';
+            $b_radius_selectors[$selector] = 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};';
         }
 
         // Background Color
         $this->add_control(
-            'foodlymentor_' . $element_name . '_bg_color',
+            'foodlymentor_' . $id . '_bg_color',
             [
                 'label' => esc_html__('Background Color', 'foodlymentor'),
                 'type' => Controls_Manager::COLOR,
@@ -119,32 +138,36 @@ trait Controls
         );
 
         // Padding
-        $this->add_responsive_control(
-            'foodlymentor_' . $element_name . '_padding',
-            [
-                'label' => __('Padding', 'foodlymentor'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'rem', 'em'],
-                'selectors' => $padding_selectors,
-            ]
-        );
+        if (!in_array('padding', $disable_controls)) {
+            $this->add_responsive_control(
+                'foodlymentor_' . $id . '_padding',
+                [
+                    'label' => __('Padding', 'foodlymentor'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', '%', 'rem', 'em'],
+                    'selectors' => $padding_selectors,
+                ]
+            );
+        }
 
         // Margin
-        $this->add_responsive_control(
-            'foodlymentor_' . $element_name . '_margin',
-            [
-                'label' => __('Margin', 'foodlymentor'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'rem', 'em'],
-                'selectors' => $margin_selectors,
-            ]
-        );
+        if (!in_array('margin', $disable_controls)) {
+            $this->add_responsive_control(
+                'foodlymentor_' . $id . '_margin',
+                [
+                    'label' => __('Margin', 'foodlymentor'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', '%', 'rem', 'em'],
+                    'selectors' => $margin_selectors,
+                ]
+            );
+        }
 
         // Border
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name' => 'foodlymentor_' . $element_name . '_border',
+                'name' => 'foodlymentor_' . $id . '_border',
                 'fields_options' => [
                     'border' => [
                         'default' => 'solid',
@@ -162,18 +185,18 @@ trait Controls
                         'default' => '#eee',
                     ],
                 ],
-                'selector' => '{{WRAPPER}} ' . $selectors[0]
+                'selector' => $selectors[0]
             ]
         );
 
         // Border Radius
         $this->add_responsive_control(
-            'foodlymentor_' . $element_name . '_border_radius',
+            'foodlymentor_' . $id . '_border_radius',
             [
                 'label' => __('Border Radius', 'foodlymentor'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'rem', 'em'],
-                'selectors' => $border_radius_selectors,
+                'selectors' => $b_radius_selectors,
             ]
         );
     }
@@ -183,14 +206,40 @@ trait Controls
      * Size Controls
      * --------------------------------
      */
-    public function size_controls($element_name = '', $selector = '', $disable_controls = array())
+    public function size_controls($args)
     {
+        $defaults = array(
+            'id' => '',
+            'selectors' => array(),
+            'disable_controls' => array()
+        );
+
+        $args = wp_parse_args($args, $defaults);
+
+        extract($args);
+
+        $width_selectors = array();
+        $height_selectors = array();
+        $maxWidth_selectors = array();
+        $maxHeight_selectors = array();
+
+        foreach ($selectors as $key => $selector) {
+            $width_selectors[$selector] = 'width:  {{SIZE}}{{UNIT}};';
+
+            $maxWidth_selectors[$selector] = 'max-width:  {{SIZE}}{{UNIT}};';
+
+            $height_selectors[$selector] = 'height: {{SIZE}}{{UNIT}};';
+
+            $maxHeight_selectors[$selector] = 'max-height: {{SIZE}}{{UNIT}};';
+        }
+
+        // Width
         $this->add_control(
-            'foodlymentor_' . $element_name . '_width',
+            'foodlymentor_' . $id . '_width',
             [
                 'label' => esc_html__('Width', 'foodlymentor'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
+                'size_units' => ['px', '%', 'vw'],
                 'range' => [
                     'px' => [
                         'min' => 0,
@@ -200,48 +249,146 @@ trait Controls
                     '%' => [
                         'min' => 0,
                         'max' => 100,
+                    ],
+                    'vw' => [
+                        'min' => 0,
+                        'max' => 100,
                     ]
                 ],
                 'default' => [
                     'unit' => '%',
                     'size' => 100,
                 ],
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector => 'width: {{SIZE}}{{UNIT}};',
-                ],
+                'selectors' => $width_selectors,
             ]
         );
 
+        // Height
         if (!in_array('height', $disable_controls)) {
             $this->add_control(
-                'foodlymentor_' . $element_name . '_height',
+                'foodlymentor_' . $id . '_height',
                 [
                     'label' => esc_html__('Height', 'foodlymentor'),
                     'type' => \Elementor\Controls_Manager::SLIDER,
-                    'size_units' => ['px', '%'],
+                    'size_units' => ['px', '%', 'vh'],
                     'range' => [
                         'px' => [
                             'min' => 0,
                             'max' => 1000,
                             'step' => 1,
                         ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                        'vh' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ]
                     ],
                     'default' => [
-                        'unit' => 'px',
-                        'size' => 50,
+                        'unit' => '%',
+                        'size' => 100,
                     ],
-                    'selectors' => [
-                        '{{WRAPPER}} ' . $selector => 'height: {{SIZE}}{{UNIT}};',
+                    'selectors' => $height_selectors,
+                ]
+            );
+        }
+
+        // Max Width
+        if (!in_array('max-width', $disable_controls)) {
+            $this->add_control(
+                'foodlymentor_' . $id . '_max_width',
+                [
+                    'label' => esc_html__('Max Width', 'foodlymentor'),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => ['px', '%', 'vw'],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1000,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                        'vw' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ]
                     ],
+                    'default' => [
+                        'unit' => '%',
+                        'size' => 100,
+                    ],
+                    'selectors' => $maxWidth_selectors,
+                ]
+            );
+        }
+
+        // Max Height
+        if (!in_array('max-height', $disable_controls)) {
+            $this->add_control(
+                'foodlymentor_' . $id . '_max_height',
+                [
+                    'label' => esc_html__('Max Height', 'foodlymentor'),
+                    'type' => \Elementor\Controls_Manager::SLIDER,
+                    'size_units' => ['px', '%', 'vh'],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1000,
+                            'step' => 1,
+                        ],
+                        '%' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                        'vh' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ]
+                    ],
+                    'default' => [
+                        'unit' => '%',
+                        'size' => 100,
+                    ],
+                    'selectors' => $maxHeight_selectors,
                 ]
             );
         }
     }
 
-    public function position_controls($element_name = '', $selector = '', $disable_controls = array())
+
+    /**
+     * --------------------------------
+     * Position Controls
+     * --------------------------------
+     */
+    public function position_controls(array $args)
     {
+        $defaults = array(
+            'id' => '',
+            'selectors' => array(),
+            'disable_controls' => array()
+        );
+
+        $args = wp_parse_args($args, $defaults);
+
+        extract($args);
+
+        $top_selectors = array();
+        $left_selectors = array();
+
+        foreach ($selectors as $key => $selector) {
+            $top_selectors[$selector] = 'top:  {{SIZE}}{{UNIT}};';
+
+            $left_selectors[$selector] = 'left: {{SIZE}}{{UNIT}};';
+        }
+
         $this->add_control(
-            'foodlymentor_' . $element_name . '_top',
+            'foodlymentor_' . $id . '_top',
             [
                 'label' => esc_html__('Vertical Offset', 'foodlymentor'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
@@ -258,17 +405,15 @@ trait Controls
                     ],
                 ],
                 'default' => [
-                    'unit' => '%',
-                    'size' => 50,
+                    'unit' => 'px',
+                    'size' => 10,
                 ],
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector => 'top: {{SIZE}}{{UNIT}};',
-                ],
+                'selectors' => $top_selectors,
             ]
         );
 
         $this->add_control(
-            'foodlymentor_' . $element_name . '_left',
+            'foodlymentor_' . $id . '_left',
             [
                 'label' => esc_html__('Horizontal Offset', 'foodlymentor'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
@@ -286,11 +431,9 @@ trait Controls
                 ],
                 'default' => [
                     'unit' => '%',
-                    'size' => 80,
+                    'size' => 90,
                 ],
-                'selectors' => [
-                    '{{WRAPPER}} ' . $selector => 'left: {{SIZE}}{{UNIT}};',
-                ],
+                'selectors' => $left_selectors,
             ]
         );
     }

@@ -5,7 +5,7 @@ use Elementor\Controls_Manager;
 $this->start_controls_section(
     'foodlymentor_product_grid_text_color_typography',
     [
-        'label' => esc_html__('Colors & Typography', 'foodlymentor'),
+        'label' => esc_html__('Grid Product Texts', 'foodlymentor'),
         'tab' => Controls_Manager::TAB_STYLE,
     ]
 );
@@ -19,9 +19,14 @@ $this->add_control(
     ]
 );
 
-$this->color_typography_controls('product_grid_title', array(
-    '.foodlymentor-product-grid .woocommerce ul.products li.product .woocommerce-loop-product__title',
-));
+$this->color_typography_controls(
+    array(
+        'id' => 'product_grid_title',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product .woocommerce-loop-product__title',
+        )
+    )
+);
 
 
 // Description Styles
@@ -34,9 +39,14 @@ $this->add_control(
     ]
 );
 
-$this->color_typography_controls('product_grid_desc', array(
-    '.foodlymentor-product-grid .woocommerce ul.products li.product .woocommerce-loop-product__excerpt',
-));
+$this->color_typography_controls(
+    array(
+        'id' => 'product_grid_desc',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product .woocommerce-loop-product__excerpt',
+        )
+    )
+);
 
 // Price Styles
 $this->add_control(
@@ -48,8 +58,12 @@ $this->add_control(
     ]
 );
 
-$this->color_typography_controls('product_grid_price', array(
-    '.foodlymentor-product-grid .woocommerce ul.products li.product .woocommerce-loop-product__price .woocommerce-Price-amount',
+$this->color_typography_controls(array(
+    'id' => 'product_grid_price',
+    'selectors' => array(
+        '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product .woocommerce-loop-product__price .woocommerce-Price-amount',
+    ),
+    'disable_controls' => array('alignment')
 ));
 
 // Plus Icon Styles
@@ -62,8 +76,12 @@ $this->add_control(
     ]
 );
 
-$this->color_typography_controls('product_grid_plus_icon', array(
-    '.foodlymentor-product-grid .woocommerce ul.products li.product span.eicon-plus',
+$this->color_typography_controls(array(
+    'id' => 'product_grid_plus_icon',
+    'selectors' => array(
+        '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product span.eicon-plus',
+    ),
+    'disable_controls' => array('alignment')
 ));
 
 $this->end_controls_section();

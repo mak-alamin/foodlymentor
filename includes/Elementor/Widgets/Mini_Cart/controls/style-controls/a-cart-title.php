@@ -14,14 +14,21 @@ $this->start_controls_section(
     ]
 );
 
-$this->color_typography_controls('cart_title', array(
-    '.foodlymentor_shopping_cart_content .cart-title',
-));
+$this->color_typography_controls(
+    array(
+        'id' => 'cart_title',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_shopping_cart_content .cart-title',
+        )
+    )
+);
 
 $this->box_controls(
-    'cart_title',
     array(
-        '.foodlymentor_shopping_cart_content .cart-title',
+        'id' => 'cart_title',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor_shopping_cart_content .cart-title',
+        )
     )
 );
 

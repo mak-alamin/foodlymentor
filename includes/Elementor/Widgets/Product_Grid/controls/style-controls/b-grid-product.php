@@ -7,7 +7,7 @@ use Elementor\Group_Control_Box_Shadow;
 $this->start_controls_section(
     'foodlymentor_product_grid_styles',
     [
-        'label' => esc_html__('Products', 'foodlymentor'),
+        'label' => esc_html__('Grid Product', 'foodlymentor'),
         'tab' => Controls_Manager::TAB_STYLE,
     ]
 );
@@ -261,5 +261,49 @@ $this->add_responsive_control(
         ],
     ]
 );
+
+// Grid Image
+$this->add_control(
+    'foodlymentor_product_grid_image_styles',
+    [
+        'label' => esc_html__('Image Styles', 'foodlymentor'),
+        'type' => \Elementor\Controls_Manager::HEADING,
+        'separator' => 'before',
+    ]
+);
+
+$this->box_controls(
+    array(
+        'id' => 'grid_product_image',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product .product__img img',
+        )
+    )
+);
+
+$this->add_responsive_control(
+    'foodlymentor_product_grid_image_width',
+    [
+        'label' => esc_html__('Image Width(%)', 'foodlymentor'),
+        'type' => Controls_Manager::SLIDER,
+        'size_units' => ['px', '%'],
+        'range' => [
+            'px' => [
+                'min' => 0,
+                'max' => 200,
+                'step' => 1,
+            ],
+            '%' => [
+                'min' => 0,
+                'max' => 100,
+            ],
+        ],
+        'selectors' => [
+            '{{WRAPPER}} .foodlymentor-product-grid .product .product__img img' => 'width: {{SIZE}}{{UNIT}};',
+        ],
+        'separator' => 'before',
+    ]
+);
+
 
 $this->end_controls_section();

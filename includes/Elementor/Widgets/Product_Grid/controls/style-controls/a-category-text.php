@@ -14,14 +14,19 @@ $this->start_controls_section(
     ]
 );
 
-$this->color_typography_controls('product_grid_category_text', array(
-    '.foodlymentor-product-grid .woocommerce .category-text a',
+$this->color_typography_controls(array(
+    'id' => 'product_grid_category_text',
+    'selectors' => array(
+        '{{WRAPPER}} .foodlymentor-product-grid .woocommerce .category-text a',
+    )
 ));
 
 $this->box_controls(
-    'product_category_text',
     array(
-        '.foodlymentor-product-grid .woocommerce .category-text',
+        'id' => 'product_grid_category_text',
+        'selectors' => array(
+            '{{WRAPPER}} .foodlymentor-product-grid .woocommerce .category-text',
+        )
     )
 );
 
