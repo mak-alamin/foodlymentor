@@ -54,6 +54,8 @@
 
             let option_price = option.price ? option.price : 0;
 
+            let defaultQty = el?.min_selection ? el.min_selection : 1;
+
             option_price = parseFloat(option_price).toFixed(2);
 
             html +=
@@ -73,7 +75,8 @@
               '<div class="value-button extra_decrease" value="Decrease Quantity">-</div>';
 
             html +=
-              '<input type="text" name="ex_options_qty_0" value="1" min="' +
+              '<input type="text" name="ex_options_qty_0" value="' + defaultQty +
+              '" min="' +
               el.min_selection +
               '" max="' +
               el.max_selection +
@@ -182,6 +185,13 @@
       quantity = isNaN(quantity) ? 1 : quantity;
       quantity++;
 
+      let maxQuantity =
+        parseInt($(this).siblings("input.extra-items-quantity").attr('max'));
+      
+      if(quantity > maxQuantity){
+        return;
+      }
+
       $(this).siblings("input.extra-items-quantity").val(quantity);
 
       let extra_price = $(this).closest(".option").data("price");
@@ -205,7 +215,10 @@
 
       quantity = isNaN(quantity) ? 1 : quantity;
 
-      if (quantity == 1) {
+      let minQuantity =
+      parseInt($(this).siblings("input.extra-items-quantity").attr('min'));
+
+      if ( quantity == minQuantity || quantity == 1) {
         $(this).closest(".iweb_extra_options").find("input.ex-options").click();
         $(this)
           .closest(".additional_options .addi_option .option")

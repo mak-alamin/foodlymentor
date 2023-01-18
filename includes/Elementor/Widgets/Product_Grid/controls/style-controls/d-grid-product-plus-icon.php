@@ -14,9 +14,17 @@ $this->start_controls_section(
     ]
 );
 
+$this->color_typography_controls(array(
+    'id' => 'product_grid_plus_icon',
+    'selectors' => array(
+        '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product span.eicon-plus',
+    ),
+    'disable_controls' => array('alignment')
+));
+
 $this->box_controls(
     array(
-        'id' => 'product_plus_icon',
+        'id' => 'product_grid_plus_icon',
         'selectors' => array(
             '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product span.eicon-plus',
         ),
@@ -25,7 +33,7 @@ $this->box_controls(
 
 $this->position_controls(
     array(
-        'id' => 'product_plus_icon',
+        'id' => 'product_grid_plus_icon',
         'selectors' => array(
             '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product span.eicon-plus',
         ),

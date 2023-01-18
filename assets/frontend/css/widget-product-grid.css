@@ -26,6 +26,7 @@
 }
 #foodlymentor_product_popup .addi_option .extra-quantity.active {
   display: block;
+  min-width: 80px;
 }
 #foodlymentor_product_popup .modal-footer .woocommerce-Price-amount.amount {
   display: none;

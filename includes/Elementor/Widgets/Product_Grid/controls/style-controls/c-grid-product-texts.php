@@ -66,22 +66,4 @@ $this->color_typography_controls(array(
     'disable_controls' => array('alignment')
 ));
 
-// Plus Icon Styles
-$this->add_control(
-    'foodlymentor_product_grid_plus_icon_heading',
-    [
-        'label' => __('Plus Icon', 'foodlymentor'),
-        'type' => Controls_Manager::HEADING,
-        'separator' => 'before',
-    ]
-);
-
-$this->color_typography_controls(array(
-    'id' => 'product_grid_plus_icon',
-    'selectors' => array(
-        '{{WRAPPER}} .foodlymentor-product-grid .woocommerce ul.products li.product span.eicon-plus',
-    ),
-    'disable_controls' => array('alignment')
-));
-
 $this->end_controls_section();

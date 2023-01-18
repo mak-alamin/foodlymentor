@@ -1,12 +1,12 @@
 <?php
 
 /**
- * More Menu Items Style Controls
+ * More Menu Button, Items, Dropdown Style Controls
  */
 
 use Elementor\Controls_Manager;
 
-
+// More Button
 $this->start_controls_section(
     'foodlymentor_more_button_styles',
     [
@@ -39,7 +39,6 @@ $this->box_controls(
 
 $this->end_controls_tab();
 
-
 $this->start_controls_tab('foodlymentor_more_button_tabs_active', ['label' => esc_html__('Active', 'foodlymentor')]);
 
 $this->color_typography_controls(
@@ -65,7 +64,32 @@ $this->end_controls_tab();
 $this->end_controls_tabs();
 
 $this->end_controls_section();
+// More Button ends
 
+
+// More Menu Dropdown
+$this->start_controls_section(
+    'foodlymentor_more_dropdown_styles',
+    [
+        'label' => esc_html__('More Dropdown', 'foodlymentor'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+
+$this->box_controls(
+    array(
+        'id' => 'more_menu_dropdown',
+        'selectors' => array(
+            '{{WRAPPER}} #moreDropdown',
+        )
+    )
+);
+
+$this->end_controls_section();
+// More Menu Dropdown ends
+
+// More Menu Items
 $this->start_controls_section(
     'foodlymentor_more_menu_items_styles',
     [
@@ -124,3 +148,4 @@ $this->end_controls_tab();
 $this->end_controls_tabs();
 
 $this->end_controls_section();
+// More Menu Items ends

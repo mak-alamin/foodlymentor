@@ -58,18 +58,20 @@ button.dropbtn:after {
 
 .dropdown-content {
   display: none;
-  position: absolute;
   background-color: #f1f1f1;
-  min-width: 240px;
+  width: 100%;
   overflow: hidden;
   overflow-y: auto;
   box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
   z-index: 1;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  right: 0;
   padding: 10px;
 }
-
+.foodlymentor-cat-menu-layout-horizontal .dropdown-content{
+  min-width: 240px;
+  position: absolute;
+  right: 0;
+}
 .dropdown-content a {
   color: black;
   padding: 12px 16px;

@@ -12,16 +12,27 @@ trait Controls
      */
     public function require_control_files($dir)
     {
-        $content_controls = array_diff(scandir($dir . '/controls/content-controls'), array('.', '..'));
+        $content_controls = array();
+        $style_controls = array();
 
-        $style_controls = array_diff(scandir($dir . '/controls/style-controls'), array('.', '..'));
-
-        foreach ($content_controls as $key => $file) {
-            require_once $dir . '/controls/content-controls/' . $file;
+        if (!empty(realpath($dir . '/controls/content-controls'))) {
+            $content_controls = array_diff(scandir($dir . '/controls/content-controls'), array('.', '..'));
         }
 
-        foreach ($style_controls as $key => $file) {
-            require_once $dir . '/controls/style-controls/' . $file;
+        if (!empty(realpath($dir . '/controls/style-controls'))) {
+            $style_controls = array_diff(scandir($dir . '/controls/style-controls'), array('.', '..'));
+        }
+
+        if (!empty($content_controls)) {
+            foreach ($content_controls as $key => $file) {
+                require_once $dir . '/controls/content-controls/' . $file;
+            }
+        }
+
+        if (!empty($style_controls)) {
+            foreach ($style_controls as $key => $file) {
+                require_once $dir . '/controls/style-controls/' . $file;
+            }
         }
     }
 
