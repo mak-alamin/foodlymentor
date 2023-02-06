@@ -6,11 +6,15 @@
    * ---------------------------------
   */
   $("body").on("click", ".foodlymentor-cart-icon", function () {
-    $(".foodlymentor_shopping_cart-side_cart").addClass("active");
+    $(".foodlymentor_shopping_cart-side_cart").animate({
+      right: '0px'
+    }, 300);
   });
 
   $("body").on("click", ".foodlymentor_shopping_cart_content .close-cart", function (){
-    $(".foodlymentor_shopping_cart-side_cart").removeClass("active");
+    $(".foodlymentor_shopping_cart-side_cart").animate({
+      right: '-40%'
+    }, 300);
   });
 
   /**

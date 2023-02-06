@@ -22,6 +22,23 @@ class Frontend
      */
     public function inject_side_cart()
     {
+        $activated =  empty(get_option('activate_side_cart')) ? 0 : get_option('activate_side_cart');
+
+        if (!$activated) {
+            return;
+        }
+
+        $controls['cart_title'] = _x('Your Cart', 'foodlymentor');
+
+        echo '<div class="foodlymentor_shopping_cart-side_cart">';
+
+        echo '<div class="foodlymentor_shopping_cart_content">';
+
+        echo '<span class="close-cart  eicon-close"></span>';
+
+        foodlymentor_get_cart($controls);
+
+        echo '</div></div>';
     }
 
     public function inject_floating_cart_icon()

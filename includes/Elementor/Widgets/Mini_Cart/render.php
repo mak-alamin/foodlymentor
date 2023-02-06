@@ -48,17 +48,9 @@ if (is_admin()) {
 
 <?php
 } else {
-    if (empty(WC()->cart)) {
-        echo '<p>' . _x('Cart is empty.', 'foodlymentor') . '</p>';
-    } else {
-        echo '<h2 class="cart-title">' .  $settings['foodlymentor_cart_title'] . '</h2>';
+    $controls['cart_title'] = $settings['foodlymentor_cart_title'];
 
-        echo  '<div class="foodlymentor_mini_cart">';
-
-        echo woocommerce_mini_cart();
-
-        echo '</div>';
-    }
+    foodlymentor_get_cart($settings);
 }
 
 echo '</div>';
