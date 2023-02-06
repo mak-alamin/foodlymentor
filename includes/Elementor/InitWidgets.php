@@ -11,6 +11,7 @@
 namespace Inc\Elementor;
 
 use Inc\Elementor\Widgets\Mini_Cart\Mini_Cart;
+use Inc\Elementor\Widgets\Cart_Icon\Cart_Icon;
 use Inc\Elementor\Widgets\Cat_Menu\Cat_Menu;
 use Inc\Elementor\Widgets\Product_Grid\Product_Grid;
 
@@ -39,8 +40,9 @@ class InitWidgets
     }
 
     function register_widgets($widgets_manager)
-    {
+    {  
         $widgets_manager->register(new Mini_Cart());
+        $widgets_manager->register(new Cart_Icon());
         $widgets_manager->register(new Cat_Menu());
         $widgets_manager->register(new Product_Grid());
     }

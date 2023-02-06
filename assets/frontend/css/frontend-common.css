@@ -1,3 +1,52 @@
+/* Cart Icon */
+body {
+  position: relative;
+}
+.foodlymentor_floating_cart {
+  position: absolute;
+}
+.foodlymentor_floating_cart.top_left{
+  top:10px;
+  left: 10px;
+}
+.foodlymentor_floating_cart.top_right{
+  top:10px;
+  right: 10px;
+}
+.foodlymentor_floating_cart.bottom_left{
+  bottom:10px;
+  left: 10px;
+}
+.foodlymentor_floating_cart.bottom_right{
+  bottom:10px;
+  right: 10px;
+}
+.foodlymentor-cart-icon {
+  display: inline-block;
+  background-color: black;
+  padding: 7px 10px;
+  border-radius: 50%;
+  color: #fff;
+  position: relative;
+}
+.foodlymentor-cart-icon:hover{
+  cursor: pointer;
+}
+.foodlymentor-cart-icon i {
+  font-size: 18px;
+}
+.foodlymentor-cart-icon .cart-count {
+  background: #333;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  right: -8px;
+}
+
 /* Cart */
 .foodlymentor_shopping_cart_content dd,
 .shop_table dd,

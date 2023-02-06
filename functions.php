@@ -13,6 +13,32 @@ function utf8ize($d)
         return utf8_encode($d);
     }
     return $d;
+} 
+
+function foodlymentor_get_cart($controls)
+{
+    if (empty(WC()->cart)) {
+        echo '<p>' . _x('Cart is empty.', 'foodlymentor') . '</p>';
+    } else {
+        echo '<h2 class="cart-title">' .  $controls['cart_title'] . '</h2>';
+
+        echo  '<div class="foodlymentor_mini_cart">';
+
+        echo woocommerce_mini_cart();
+
+        echo '</div>';
+    }
+}
+
+function foodlymentor_get_cart_icon()
+{
+    // echo '<pre>';
+    // print_r(WC()->cart);
+    // echo '</pre>';
+
+    echo '<span class="foodlymentor-cart-icon">
+    <i class="eicon-bag-medium"></i>
+    <span class="cart-count">'. WC()->cart->get_cart_contents_count().'</span></span>';
 }
 
 // Metadata repeat field
@@ -44,11 +70,6 @@ function foodlycmb2_render_price_options_field_callback($field, $value, $object_
     ));
 
     wp_enqueue_style('admin-main');
-
-    // echo '<pre>';
-    // print_r($value);
-    // echo '</pre>';
-
 ?>
     <div class="foodly-options foodly-name-option">
         <p><label for="<?php echo $field_type->_id('_name'); ?>"><?php esc_html_e('Option name', $text_domain) ?></label></p>

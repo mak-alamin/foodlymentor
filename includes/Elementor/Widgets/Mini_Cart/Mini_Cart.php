@@ -53,7 +53,7 @@ class Mini_Cart extends \Elementor\Widget_Base
     {
         return [
             'widget-main',
-            'widget-product-cart',
+            'widget-mini-cart',
         ];
     }
 

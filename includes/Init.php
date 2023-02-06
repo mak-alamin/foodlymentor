@@ -19,8 +19,9 @@ final class Init
             Frontend::class,
             Base\Ajax::class,
             Admin\Menus::class,
-            Elementor\InitWidgets::class,
             WooHooks\Cart::class,
+            Elementor\InitWidgets::class,
+            Admin\SettingsApi\CartSettings\CartSettings::class,
         ];
     }
 

@@ -80,7 +80,6 @@ $this->end_controls_section();
 /**
  * Box Layout
  */
-
 $this->start_controls_section(
     'foodlymentor_product_grid_box_layouts',
     [

@@ -1,5 +1,5 @@
 <div class="wrap">
     <h1>Dashboard</h1>
     <hr>
-    <p>This is Dashboard Page.</p>
+    <p>Welcome to Foodlymentor dashboard.</p>
 </div>

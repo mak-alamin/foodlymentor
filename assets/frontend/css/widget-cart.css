@@ -1,3 +1,46 @@
+.elementor-widget-wrap .foodlymentor_shopping_cart-side_cart {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  width: 28%;
+  transition: .3s all;
+  transform: translateX(110%);
+  padding: 10px 5px;
+  box-shadow: 1px 1px 10px #b5b5b5;
+}
+.elementor-widget-wrap .foodlymentor_shopping_cart-side_cart.active{
+  transform: translateX(0%) !important;
+}
+.admin-bar .elementor-widget-wrap .foodlymentor_shopping_cart-side_cart{
+  top: 34px;
+}
+.foodlymentor_shopping_cart-side_cart .foodlymentor_shopping_cart_content{
+  height: 96vh;
+  position: relative;
+}
+.foodlymentor_shopping_cart_content {
+  background: #fff;
+}
+.foodlymentor_shopping_cart_content span.close-cart {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding-top: 2px;
+  border-radius: 50%;
+  position: absolute;
+  left: 150px;
+  top: 0px;
+  cursor: pointer;
+  z-index: 999;
+}
+.foodlymentor_shopping_cart-side_cart.active span.close-cart{
+  left: -18px;
+}
 .foodlymentor_shopping_cart_content .cart-title {
   margin-bottom: 10px;
 }
@@ -38,8 +81,20 @@
   display: flex;
   justify-content: space-between;
 }
+.foodlymentor_shopping_cart-side_cart  .woocommerce-mini-cart__total.total {
+  position: absolute;
+  left: 10px;
+  bottom: 74px;
+  width: 92%;
+}
 .foodlymentor_mini_cart .woocommerce-mini-cart__buttons.buttons {
   margin-bottom: 0;
+}
+.foodlymentor_shopping_cart-side_cart .woocommerce-mini-cart__buttons.buttons{
+  position: absolute;
+  left: 10px;
+  bottom: 30px;
+  width: 92%;
 }
 .foodlymentor_mini_cart .button.wc-forward {
   display: none;
