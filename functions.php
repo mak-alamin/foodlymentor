@@ -13,7 +13,7 @@ function utf8ize($d)
         return utf8_encode($d);
     }
     return $d;
-} 
+}
 
 function foodlymentor_get_cart($controls)
 {
@@ -35,10 +35,13 @@ function foodlymentor_get_cart_icon()
     // echo '<pre>';
     // print_r(WC()->cart);
     // echo '</pre>';
+    // die();
+
+    $cart_count = empty(WC()->cart) ? 0 : WC()->cart->get_cart_contents_count();
 
     echo '<span class="foodlymentor-cart-icon">
     <i class="eicon-bag-medium"></i>
-    <span class="cart-count">'. WC()->cart->get_cart_contents_count().'</span></span>';
+    <span class="cart-count">' . $cart_count  . '</span></span>';
 }
 
 // Metadata repeat field

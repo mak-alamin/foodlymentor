@@ -64,6 +64,15 @@
   box-shadow: 0px 1px 5px #33333345;
   padding: 10px;
 }
+.foodlymentor_shopping_cart_content li.woocommerce-mini-cart-item.mini_cart_item a {
+  display: flex;
+  align-items: center;
+}
+.foodlymentor_shopping_cart_content li.woocommerce-mini-cart-item.mini_cart_item span.quantity {
+  display: inline-block;
+  width: 80%;
+  text-align: center;
+}
 .foodlymentor_shopping_cart_content .woocommerce-mini-cart li {
   display: grid;
   grid-template-rows: minmax(30px, max-content);

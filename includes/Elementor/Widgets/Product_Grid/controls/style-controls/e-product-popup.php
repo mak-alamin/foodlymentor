@@ -14,6 +14,7 @@ $this->start_controls_section(
     ]
 );
 
+// Main Popup Box
 $this->add_control(
     'foodlymentor_product_popup_box_styles',
     [
@@ -38,8 +39,13 @@ $this->size_controls(
         'selectors' => array(
             '#foodlymentor_product_popup.modal-container .modal-content',
         ),
+        'width_default' => [
+            'unit' => '%',
+            'size' => 50,
+        ]
     )
 );
+// Main Popup Box ends
 
 // Popup Title
 $this->add_control(

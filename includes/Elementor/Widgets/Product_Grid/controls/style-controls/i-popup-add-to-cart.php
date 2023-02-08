@@ -20,6 +20,10 @@ $this->box_controls(
         'selectors' => array(
             '#foodlymentor_product_popup.modal-container .modal-footer a.add_to_cart_button',
         ),
+        'default_values' => [
+            'bg' => '#0274be',
+            'border_color' =>  '#0274be'
+        ]
     )
 );
 

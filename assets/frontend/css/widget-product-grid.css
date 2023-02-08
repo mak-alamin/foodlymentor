@@ -81,6 +81,8 @@
 #foodlymentor_product_popup .modal-header h2 {
   margin-bottom: 0;
   width: 100%;
+  padding: 10px 15px;
+  background: #eee;
 }
 #foodlymentor_product_popup .eicon-editor-close {
   padding: 5px;
@@ -125,6 +127,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 }
 #foodlymentor_product_popup .quantity input {
   max-width: 70px;
@@ -289,7 +292,7 @@
   align-items: center;
   cursor: pointer;
   color: #fff;
-  background-color: #333;
+  background-color: #eee;
   padding: 10px;
   position: relative;
 }
@@ -351,7 +354,7 @@
 }
 .foodlymentor-product-grid .woocommerce ul.products .product span.eicon-plus {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 85%;
   background: #ddd;
   padding: 6px;

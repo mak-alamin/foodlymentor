@@ -46,13 +46,13 @@
           el.min_selection +
           "'>";
 
-        html += "<h3>" + el.title + "</h3>";
+        html += "<h3>" + el?.title + "</h3>";
 
-        if (el?._options.length) {
+        if (el?._options?.length) {
           el._options.forEach((option, index) => {
             console.log(option);
 
-            let option_price = option.price ? option.price : 0;
+            let option_price = option?.price ? option.price : 0;
 
             let defaultQty = el?.min_selection ? el.min_selection : 1;
 
@@ -286,7 +286,11 @@
 
             product_desc.text(data.short_desc);
 
-            addi_options.html(foodlyAddiOptionsHtml(data));
+            let additional_options = foodlyAddiOptionsHtml(data);
+
+            if(additional_options){
+              addi_options.html(additional_options);
+            }
 
             modal_footer.append(data.add_to_cart_btn);
 

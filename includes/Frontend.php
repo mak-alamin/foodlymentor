@@ -11,6 +11,7 @@ class Frontend
     public function register()
     {
         wp_enqueue_style('frontend-common');
+        wp_enqueue_style('widget-cart');
         wp_enqueue_script('widget-main');
 
         add_action('wp_footer', [$this, 'inject_floating_cart_icon']);
@@ -27,6 +28,8 @@ class Frontend
         if (!$activated) {
             return;
         }
+
+        wp_enqueue_script('widget-mini-cart');
 
         $controls['cart_title'] = _x('Your Cart', 'foodlymentor');
 

@@ -92,6 +92,10 @@ $this->box_controls(
         'selectors' => array(
             '{{WRAPPER}} .foodlymentor_mini_cart .button.wc-forward.checkout',
         ),
+        'default_values' => [
+            'bg' => '#32373C',
+            'border_color' =>  '#32373C'
+        ]
     )
 );
 
@@ -101,7 +105,7 @@ $this->size_controls(
         'selectors' => array(
             '{{WRAPPER}} .foodlymentor_mini_cart .button.wc-forward.checkout',
         ),
-        'disable_controls' => array('height', 'max-height')
+        'disable_controls' => array('height', 'max-height'),
     )
 );
 

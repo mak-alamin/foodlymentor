@@ -131,7 +131,11 @@ $this->box_controls(
         'selectors' => array(
             '#foodlymentor_product_popup .addi_option .option .value-button',
         ),
-        'disable_controls' => array('margin', 'padding')
+        'disable_controls' => array('margin', 'padding'),
+        'default_values' => [
+            'bg' => '#0274BE',
+            'border_color' =>  '#0274BE'
+        ]
     )
 );
 

@@ -14,7 +14,7 @@ if (is_admin()) {
             <ul class="woocommerce-mini-cart cart_list product_list_widget ">
                 <li class="woocommerce-mini-cart-item mini_cart_item">
                     <a href="" class="remove remove_from_cart_button"><span class="ahfb-svg-iconset ast-inline-flex"><?php echo $remove_icon; ?></span></a> <a href="#">
-                        <img width="300" height="300" src="<?php echo FOODLYMENTOR_ASSETS_URL . '/images/cart-item-1.jpeg' ?>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail">Hat </a>
+                        <img width="300" height="300" src="<?php echo FOODLYMENTOR_ASSETS_URL . '/images/cart-item-1.png' ?>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail">Spaghetti with Grilled Mackerel</a>
                     <dl class="variation open">
                         <dt class="variation-Additionals">+ Additionals:</dt>
                         <dd class="variation-Additionals"></dd>
@@ -31,7 +31,7 @@ if (is_admin()) {
                 </li>
                 <li class="woocommerce-mini-cart-item mini_cart_item">
                     <a href="" class="remove remove_from_cart_button"><span class="ahfb-svg-iconset ast-inline-flex"><?php echo $remove_icon; ?></span></a> <a href="#">
-                        <img width="300" height="300" src="<?php echo FOODLYMENTOR_ASSETS_URL . '/images/cart-item-2.jpeg' ?>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail">Shoes </a>
+                        <img width="300" height="300" src="<?php echo FOODLYMENTOR_ASSETS_URL . '/images/cart-item-2.png' ?>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail">Chicken Nuggets with Potato </a>
                     <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>18.00</bdi></span></span>
                 </li>
             </ul>

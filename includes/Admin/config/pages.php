@@ -17,12 +17,12 @@ return array(
                 'menu_slug' => 'foodlymentor',
                 'callback' => array($this->pages_callbacks, 'dashboardPage'),
             ),
-            array(
-                'page_title' => 'Foodlymentor | Widgets',
-                'menu_title' => 'Widgets',
-                'menu_slug' => 'foodlymentor-widgets',
-                'callback' => array($this->pages_callbacks, 'widgetsPage'),
-            ),
+            // array(
+            //     'page_title' => 'Foodlymentor | Widgets',
+            //     'menu_title' => 'Widgets',
+            //     'menu_slug' => 'foodlymentor-widgets',
+            //     'callback' => array($this->pages_callbacks, 'widgetsPage'),
+            // ),
             array(
                 'page_title' => 'Foodlymentor | Settings',
                 'menu_title' => 'Settings',

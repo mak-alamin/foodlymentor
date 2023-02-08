@@ -115,10 +115,22 @@ trait Controls
         $defaults = array(
             'id' => '',
             'selectors' => array(),
-            'disable_controls' => array()
+            'disable_controls' => array(),
+            'default_values' => [
+                'bg' => '#fff',
+                'border_color' =>  '#eee'
+            ]
         );
 
         $args = wp_parse_args($args, $defaults);
+
+        // echo '<pre>';
+        // print_r($args);
+        // echo '</pre>';
+
+        // if ($args['id'] == 'product_popup_title') {
+        //     die();
+        // }
 
         extract($args);
 
@@ -143,7 +155,7 @@ trait Controls
             [
                 'label' => esc_html__('Background Color', 'foodlymentor'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => $default_values['bg'],
                 'selectors' => $bg_selectors,
             ]
         );
@@ -193,7 +205,7 @@ trait Controls
                         ],
                     ],
                     'color' => [
-                        'default' => '#eee',
+                        'default' => $default_values['border_color'],
                     ],
                 ],
                 'selector' => $selectors[0]
@@ -222,7 +234,15 @@ trait Controls
         $defaults = array(
             'id' => '',
             'selectors' => array(),
-            'disable_controls' => array()
+            'disable_controls' => array(),
+            'width_default' => [
+                'unit' => '%',
+                'size' => 100,
+            ],
+            'height_default' => [
+                'unit' => '%',
+                'size' => 100,
+            ]
         );
 
         $args = wp_parse_args($args, $defaults);
@@ -266,10 +286,7 @@ trait Controls
                         'max' => 100,
                     ]
                 ],
-                'default' => [
-                    'unit' => '%',
-                    'size' => 100,
-                ],
+                'default' => $width_default,
                 'selectors' => $width_selectors,
             ]
         );
@@ -297,10 +314,7 @@ trait Controls
                             'max' => 100,
                         ]
                     ],
-                    'default' => [
-                        'unit' => '%',
-                        'size' => 100,
-                    ],
+                    'default' => $height_default,
                     'selectors' => $height_selectors,
                 ]
             );
