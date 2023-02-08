@@ -17,10 +17,11 @@ function utf8ize($d)
 
 function foodlymentor_get_cart($controls)
 {
+    echo '<h2 class="cart-title">' .  $controls['cart_title'] . '</h2>';
+
     if (empty(WC()->cart)) {
         echo '<p>' . _x('Cart is empty.', 'foodlymentor') . '</p>';
     } else {
-        echo '<h2 class="cart-title">' .  $controls['cart_title'] . '</h2>';
 
         echo  '<div class="foodlymentor_mini_cart">';
 

@@ -2,6 +2,10 @@
 
 $settings = $this->get_settings_for_display();
 
+$controls['cart_title'] = $settings['foodlymentor_cart_title'];
+
+update_option('foodlymentor_cart_title', $controls['cart_title']);
+
 echo  '<div class="foodlymentor_shopping_cart_content">';
 
 $remove_icon = '<svg class="ast-mobile-svg ast-close-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5.293 6.707l5.293 5.293-5.293 5.293c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l5.293-5.293 5.293 5.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-5.293-5.293 5.293-5.293c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-5.293 5.293-5.293-5.293c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414z"></path></svg>';
@@ -9,7 +13,7 @@ $remove_icon = '<svg class="ast-mobile-svg ast-close-svg" fill="currentColor" ve
 if (is_admin()) {
 ?>
     <div class="foodlymentor_shopping_cart_content">
-        <h2 class="cart-title"><?php echo $settings['foodlymentor_cart_title']; ?></h2>
+        <h2 class="cart-title"><?php echo $controls['cart_title']; ?></h2>
         <div class="foodlymentor_mini_cart">
             <ul class="woocommerce-mini-cart cart_list product_list_widget ">
                 <li class="woocommerce-mini-cart-item mini_cart_item">
@@ -48,9 +52,7 @@ if (is_admin()) {
 
 <?php
 } else {
-    $controls['cart_title'] = $settings['foodlymentor_cart_title'];
-
-    foodlymentor_get_cart($settings);
+    foodlymentor_get_cart($controls);
 }
 
 echo '</div>';

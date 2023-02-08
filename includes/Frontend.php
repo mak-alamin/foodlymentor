@@ -31,7 +31,9 @@ class Frontend
 
         wp_enqueue_script('widget-mini-cart');
 
-        $controls['cart_title'] = _x('Your Cart', 'foodlymentor');
+        $cart_title = empty(get_option('foodlymentor_cart_title')) ? _x('Your Cart', 'foodlymentor') : get_option('foodlymentor_cart_title');
+
+        $controls['cart_title'] = $cart_title;
 
         echo '<div class="foodlymentor_shopping_cart-side_cart">';
 
